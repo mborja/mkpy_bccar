@@ -1,0 +1,31 @@
+<loader version="1.0">
+	<application id="BCCaribe">
+		<name >
+			Solicitudes de credito
+		</name>
+		<description >
+			Solicitudes de credito para Belcorp Caribe
+		</description>
+		<version >
+			1.0.106
+		</version>
+		<vendor >
+			Makipuray
+		</vendor>
+		<copyright >
+			Copyright (c) 2012 Makipuray
+		</copyright>
+		<fileset Java="1.54" _blackberryVersion="[5.0.0)">
+			<directory >
+				5.0.0
+			</directory>
+			<files >
+				BCCaribe.cod
+
+			</files>
+
+		</fileset>
+
+	</application>
+
+</loader>

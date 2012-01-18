@@ -1,0 +1,20 @@
+Manifest-Version: 1.0
+MIDlet-Version: 1.0.106
+MIDlet-Jar-Size: 235358
+MicroEdition-Configuration: CLDC-1.1
+MIDlet-Jar-URL: BC.jar
+RIM-COD-Module-Dependencies: net_rim_cldc,net_rim_xml_org,net_rim_xml,net_rim_locationapi
+RIM-COD-URL-1: BCCaribe-1.cod
+RIM-COD-SHA1-1: 62 f3 37 b6 8b 9e 40 75 54 61 1d 56 28 29 49 12 c4 38 2c 60
+RIM-MIDlet-Flags-1: 0
+RIM-COD-Size-1: 33212
+RIM-COD-Module-Name: BCCaribe
+MIDlet-Name: BC
+RIM-COD-Size: 75192
+RIM-COD-Creation-Time: 1326831909
+MIDlet-1: Solicitudes de credito,res/Icono.png,
+RIM-COD-URL: BCCaribe.cod
+MIDlet-Description: Solicitudes de credito para Belcorp Caribe
+RIM-COD-SHA1: a8 77 45 e9 cb c2 94 79 49 a6 56 a1 a1 f4 86 02 85 32 48 8a
+MicroEdition-Profile: MIDP-2.0
+MIDlet-Vendor: Makipuray
