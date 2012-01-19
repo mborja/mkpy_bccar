@@ -1,0 +1,27 @@
+﻿
+
+
+/*Progressbar container wrapper*/
+#dvProgressContainer
+{
+	border-left: solid 1px #CFCFCF;
+	border-right: solid 1px #CFCFCF;
+	width: 300px;
+	height: 12px;
+	background-image: url(../../img/upload/Progressbar_Wrapper.gif);
+}
+/*Progressbar container*/
+#dvProgress
+{
+	background-image: url(../../img/upload/Progressbar_Content.gif);
+	height: 100%;
+	width: 0px;
+}
+
+.StartUpload
+{
+	/* for IE */
+	filter:alpha(opacity=20);
+	/* CSS3 standard */
+	opacity:0.2;
+}

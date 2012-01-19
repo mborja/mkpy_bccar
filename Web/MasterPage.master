@@ -1,0 +1,229 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>Belcorp - Solicitudes de crédito</title>
+    <link rel="stylesheet" type="text/css" href="includes/css/estilos.css"/>
+    <link rel="stylesheet" type="text/css" href="includes/css/messages.css"/>
+    <link rel="stylesheet" type="text/css" href="includes/css/uploader.css"/>
+    <style type="text/css" media="screen" >
+        
+        .style1
+        {
+            width: 81%;
+            height: 135px;
+        }
+        .style4
+        {
+            text-align: center;
+            height: 94px;
+        }
+        .style6
+        {
+            height: 242px;
+        }
+        #imgpais
+        {
+            height: 38px;
+            width: 54px;
+        }
+        .style7
+        {
+            width: 100%;
+        }
+        .style8
+        {
+            width: 75px;
+        }
+        .style9
+        {
+            width: 766px;
+        }
+        </style>
+</head>
+<body bgcolor="#18324B">
+    <form id="form1" runat="server" >
+    
+        <table class="style1" align="center" bgcolor="White">
+            <tr>
+                <td class="style4" colspan="3">
+                    <table class="style7" width="width: 763px; height: 90px">
+                        <tr>
+                            <td align="left" class="style8">
+                                <asp:Image ID="Image1" runat="server" Height="126px" 
+                                    ImageUrl="~/img/logotipo_01.jpg" Width="212px" />
+                            </td>
+                            <td class="style9">
+                                &nbsp;</td>
+                            <td align="right">
+                                <asp:Image ID="Image2" runat="server" ImageUrl="~/img/slogan_01.jpg" 
+                                    Height="90px" Width="191px" />
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td bgcolor="#6A288A" colspan="3">
+                    
+                    <asp:Menu ID="menuAdmin" runat="server" BackColor="#6A288A" 
+                        DynamicHorizontalOffset="2" Font-Names="Arial" Font-Bold="true" Font-Size="12px" 
+                        ForeColor="White" Orientation="Horizontal" StaticSubMenuIndent="10px" 
+                        Visible="False">
+                    
+                        <StaticSelectedStyle BackColor="#6a288a" />
+                        <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                        <DynamicHoverStyle BackColor="#989db9" ForeColor="White" />
+                        <DynamicMenuStyle BackColor="#6a288a" CssClass="menuie8" />
+                        <DynamicSelectedStyle BackColor="#989db9" />
+                        <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                        <StaticHoverStyle BackColor="#989db9" ForeColor="White" />
+                    
+                        <Items>
+                            <asp:MenuItem NavigateUrl="~/Inicio.aspx" Text="INICIO" Value="Inicio">
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="HISTORIAL CREDITICIO" Value="Historial crediticio">
+                                <asp:MenuItem NavigateUrl="~/HistorialCrediticio/vistaIncorporaciones.aspx" 
+                                    Text="Incorporaciones" Value="Incorporaciones"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/HistorialCrediticio/vistaReingreso.aspx" 
+                                    Text="Reingresos" Value="Reingresos"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="REPORTES" Value="Reportes">
+                                <asp:MenuItem NavigateUrl="~/Reportes/vistaReporteIncorporaciones.aspx" 
+                                    Text="Incorporaciones" Value="Incorporaciones"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/Reportes/vistaReporteSeguimientos.aspx" 
+                                    Text="Seguimientos" Value="Seguimientos"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/Reportes/vistaReporteReingresos.aspx" Text="Reingresos" 
+                                    Value="Reingresos"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="MANTENIMIENTOS" Value="Mantenimientos">
+                                <asp:MenuItem NavigateUrl="~/Mantenimientos/vistaUsuarios.aspx" Text="Usuarios" 
+                                    Value="Usuarios"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/Mantenimientos/vistaGZ.aspx" 
+                                    Text="Gerente de Zona" Value="Gerente_de_Zona"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/Movimientos/vistaCargaDescarga.aspx" 
+                                    Text="Carga y descarga" Value="Carga_y_descarga"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/Movimientos/Contingencia.aspx" Text="Contingencia" 
+                                    Value="Contingencia"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/Mantenimientos/vistaPaises.aspx" Text="Parámetros" 
+                                    Value="Parametros"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/Mantenimientos/vistaCorreos.aspx" Text="Correos" 
+                                    Value="Correos"></asp:MenuItem>
+                            </asp:MenuItem>
+                        </Items>
+                    </asp:Menu>
+                    
+                    <asp:Menu ID="menuReportes" runat="server" BackColor="#6A288A" 
+                        DynamicHorizontalOffset="2" Font-Names="Arial" Font-Bold="true" Font-Size="12px" 
+                        ForeColor="White" Orientation="Horizontal" StaticSubMenuIndent="10px" 
+                        Visible="False">
+                        
+                        <StaticSelectedStyle BackColor="#6a288a" />
+                        <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                        <DynamicHoverStyle BackColor="#989db9" ForeColor="White" />
+                        <DynamicMenuStyle BackColor="#6a288a" CssClass="menuie8" />
+                        <DynamicSelectedStyle BackColor="#989db9" />
+                        <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                        <StaticHoverStyle BackColor="#989db9" ForeColor="White" />
+                        
+                        <Items>
+                            <asp:MenuItem NavigateUrl="~/Inicio.aspx" Text="INICIO" Value="Inicio">
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="REPORTES" Value="Reportes">
+                                <asp:MenuItem NavigateUrl="~/Reportes/ReporteIncorporaciones.aspx" 
+                                    Text="Incorporaciones" Value="Incorporaciones"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/Reportes/ReporteSeguimientos.aspx" 
+                                    Text="Seguimientos" Value="Seguimientos"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/Reportes/vistaReporteReingresos.aspx" Text="Reingresos" 
+                                    Value="Reingresos"></asp:MenuItem>
+                            </asp:MenuItem>
+                        </Items>
+                    </asp:Menu>
+                    
+                    <asp:Menu ID="menuVerifica" runat="server" BackColor="#6A288A" 
+                        DynamicHorizontalOffset="2" Font-Names="Arial" Font-Bold="true" Font-Size="12px" 
+                        ForeColor="White" Orientation="Horizontal" StaticSubMenuIndent="10px" 
+                        Visible="False">
+                    
+                        <StaticSelectedStyle BackColor="#6a288a" />
+                        <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                        <DynamicHoverStyle BackColor="#989db9" ForeColor="White" />
+                        <DynamicMenuStyle BackColor="#6a288a" CssClass="menuie8" />
+                        <DynamicSelectedStyle BackColor="#989db9" />
+                        <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                        <StaticHoverStyle BackColor="#989db9" ForeColor="White" />
+                    
+                        <Items>
+                            <asp:MenuItem NavigateUrl="~/Inicio.aspx" Text="INICIO" Value="Inicio">
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="HISTORIAL CREDITICIO" Value="Historial crediticio">
+                                <asp:MenuItem NavigateUrl="~/HistorialCrediticio/vistaIncorporaciones.aspx" 
+                                    Text="Incorporaciones" Value="Incorporaciones"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/HistorialCrediticio/vistaReingreso.aspx" 
+                                    Text="Reingresos" Value="Reingresos"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="REPORTES" Value="Reportes">
+                                <asp:MenuItem NavigateUrl="~/Reportes/vistaReporteIncorporaciones.aspx" 
+                                    Text="Incorporaciones" Value="Incorporaciones"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/Reportes/ReporteSeguimientos.aspx" 
+                                    Text="Seguimientos" Value="Seguimientos"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/Reportes/vistaReporteReingresos.aspx" Text="Reingresos" 
+                                    Value="Reingresos"></asp:MenuItem>
+                            </asp:MenuItem>
+                        </Items>
+                    </asp:Menu>
+                    
+                </td>
+            </tr>
+            <tr>
+                <td class="style6" colspan="3">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        <table class="style1" align="center">
+                            <tr>
+                                <td align="center">
+                                    &nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center">
+                                    <br />
+                                    <table align="center" class="style1">
+                                        <tr>
+                                            <td>
+                                                &nbsp;</td>
+                                        </tr>
+                                    </table>
+                                    <br />
+                                    <br />
+                                </td>
+                            </tr>
+                            </table>
+                    </asp:ContentPlaceHolder>
+                    <br />
+                   </td>
+            </tr>
+            <tr>
+                <td align="left">
+                    <span style="font-size: x-small">
+                    <img id="imgpais" runat="server" alt="" 
+                        onclick="return imgpais_onclick()" />&nbsp;
+                    </span>
+            <asp:Label ID="lblUser" runat="server" Font-Bold="True" style="font-size: x-small" 
+                        CssClass="labelEs"></asp:Label>
+&nbsp;&nbsp; 
+                </td>
+                <td align="left">
+                    &nbsp;</td>
+                <td align="right" valign="baseline">
+                    <asp:LinkButton ID="LinkButton1" runat="server" onclick="LinkButton1_Click" 
+                        CssClass="LinkButtonEs" Font-Bold="True" >Cerrar sesión</asp:LinkButton>
+                </td>
+            </tr>
+            
+        </table>
+    
+    </form>
+</body>
+</html>
+
