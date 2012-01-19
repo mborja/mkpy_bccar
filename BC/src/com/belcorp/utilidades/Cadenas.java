@@ -10,15 +10,14 @@ import com.belcorp.entidades.bc.Usuario;
 
 public final class Cadenas {
     public static final String TOKEN = "|";
-    //public static final String BIS = ";DeviceSide=false;ConnectionSetup=delayed;UsePipe=true;ConnectionTimeout=120000;EncryptRequired=true;ConnectionType=mds-public";    
-    //public static final String BIS= ";DeviceSide=false";
-    //public static final String URLBASE = "http://192.168.0.11/WebBelcorp/ws/wsGet.asmx";
-    public static final String URLBASE = "http://200.50.10.197/WebBelcorp/ws/wsGet.asmx";
+    public static final String HOST = "200.50.10.197";
+    public static final String URLBASE = "http://" + HOST + "/WebBelcorp/ws/wsGet.asmx";
     public static final String APTA = "1";
 	private static String[] opciones = {"Incorporaciones SC", " Nuevas SC", " Mantenimiento SC", 
 			"Gestión de consultoras", " Seguimientos", " Reingresos", 
 			"Sincronización", " Envío y recepción"};
 
+	
 	public static String getOpcion(int index) {
 		return opciones[index];
 	}
