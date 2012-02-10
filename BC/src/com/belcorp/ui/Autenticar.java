@@ -122,7 +122,7 @@ public class Autenticar extends MainScreen implements FieldChangeListener {
                 	Estilos.pushScreen(new MenuOpciones());
                 } else {
                 	progress.close();
-                    Dialog.inform("Código no valido.");
+                    Dialog.inform("Equipo asignado llamar a TI.");
                 }
         	} else { // las fechas son validas y debe validarse localmente
             	if ( usuario.getRegion().concat(usuario.getZona()).equals(txtZona.getText().getText()) ) {
@@ -132,7 +132,7 @@ public class Autenticar extends MainScreen implements FieldChangeListener {
                 	Estilos.pushScreen(new MenuOpciones());
             	} else {
                 	progress.close();
-                	Dialog.inform("Codigo no valido.");
+                	Dialog.inform("Equipo asignado llamar a TI.");
             	}
         		
         	}

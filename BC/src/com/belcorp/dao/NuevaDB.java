@@ -40,8 +40,9 @@ public class NuevaDB {
     private static final long IDSTORE = 0xc9f40a5522e93dcdL; // com.belcorp.entidades.nuevas
     private Vector objetos;
     private Usuario usuario;
-
-    private String response = "";
+    private String msgerror="";
+    private String coderror="";
+    private String response="";
     
     public NuevaDB() {
     	UsuarioDB usuarios = new UsuarioDB();
@@ -311,18 +312,18 @@ public class NuevaDB {
     }
 
     private boolean decodeResponse(NodeList node) {
+    	boolean ok=false;
         Node contactNode = node.item(1);
         String registro = contactNode.getChildNodes().item(0).getNodeValue();
         String[] fields = Cadenas.splitSimple(registro, Cadenas.TOKEN);
         if ( fields.length > 0 ) {
+    		this.setCoderror(fields[1]);
+    		this.setMsgerror(fields[2]);
         	if ( fields[0].trim().equals("1") ) {
-        		response = "";
-        		return true;
-        	} else {
-        		response = fields[1];
+        		ok=true;
         	}
         }
-        return false;
+        return ok;
     }
     
     public boolean putRemote(Nueva nueva) {
@@ -456,4 +457,21 @@ public class NuevaDB {
     	}
     	return resultado;
     }
+
+	public String getMsgerror() {
+		return msgerror;
+	}
+
+	public void setMsgerror(String msgerror) {
+		this.msgerror = msgerror;
+	}
+
+	public String getCoderror() {
+		return coderror;
+	}
+
+	public void setCoderror(String coderror) {
+		this.coderror = coderror;
+	}
+    
 }

@@ -175,7 +175,7 @@ public class SeguimientoDB {
             httpConn = (HttpConnection) Connector.open(URL + Cadenas.getBIS());
             setUrlSend(seg);
             httpConn.setRequestMethod(HttpConnection.POST);
-            httpConn.setRequestProperty("Host", "200.50.10.197");
+            httpConn.setRequestProperty("Host", Cadenas.HOST);
             httpConn.setRequestProperty("Connection", "close");
             httpConn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
             httpConn.setRequestProperty("Content-Length", "" + DATA.length());

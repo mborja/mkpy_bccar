@@ -37,13 +37,13 @@ public class Belcorp extends UiApplication{
         }
     }
 
-        public static void setVersion(String version) {
-                Belcorp.version = version;
-        }
+    public static void setVersion(String version) {
+            Belcorp.version = version;
+    }
 
-        public static String getVersion() {
-                return version;
-        }
+    public static String getVersion() {
+            return version;
+    }
 } 
 
 

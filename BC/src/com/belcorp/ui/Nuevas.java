@@ -153,7 +153,7 @@ public class Nuevas extends GPSScreen implements FieldChangeListener, FocusChang
 	private mkpyLabelEditField txtProfesion = new mkpyLabelEditField("Profesión:", "", 20, EditField.FIELD_LEFT | EditField.NO_NEWLINE | EditField.FILTER_DEFAULT, Color.BLACK, Color.WHITE);
 	private mkpyLabelEditField txtLugarTrabajo = new mkpyLabelEditField("Lugar de trabajo:", "", 20, EditField.FIELD_LEFT | EditField.NO_NEWLINE | EditField.FILTER_DEFAULT, Color.BLACK, Color.WHITE);
 	private mkpyLabelEditField txtTelefonoTrabajo = new mkpyLabelEditField("Teléfono de trabajo:", "", 10, EditField.FIELD_LEFT | EditField.NO_NEWLINE | EditField.FILTER_NUMERIC, Color.BLACK, Color.WHITE);
-	private DateField txtHoraVisita = new DateField("Hora de visita:", (new Date()).getTime(), DateField.DATE | DateField.USE_ALL_WIDTH);
+	private DateField txtHoraVisita = new DateField("Hora disponible de visita:", (new Date()).getTime(), DateField.DATE | DateField.USE_ALL_WIDTH);
 	private mkpyLabelEditField txtNroHijos = new mkpyLabelEditField("Nro hijos:", "", 2, EditField.FIELD_LEFT | EditField.NO_NEWLINE | EditField.FILTER_NUMERIC, Color.BLACK, Color.WHITE);
 	private mkpyLabelEditField txtNroInfantes = new mkpyLabelEditField("Nro infantes:", "", 2, EditField.FIELD_LEFT | EditField.NO_NEWLINE | EditField.FILTER_NUMERIC, Color.BLACK, Color.WHITE);
 	private mkpyLabelEditField txtNroEscolares = new mkpyLabelEditField("Nro escolares:", "", 2, EditField.FIELD_LEFT | EditField.NO_NEWLINE | EditField.FILTER_NUMERIC, Color.BLACK, Color.WHITE);
@@ -638,7 +638,7 @@ public class Nuevas extends GPSScreen implements FieldChangeListener, FocusChang
 	private void copiarDireccion(boolean copiar) {
 		if ( copiar ) {
 	        if ( usuario.getIdPais().equals("7") ) { // PR
-	            txtDEntregaDireccion.getText().setText(txtDireccion.getText().getText());
+	            txtDEntregaDireccion.getText().setText(txtDireccion.getText().getText() + " " + txtReferencia.getText().getText() );
 	            cboDEntregaPueblo.getOptions().setSelectedIndex(cboPueblo.getSelectedIndex());
 	            txtDEntregaCodPostal.getText().setText(txtCodPostal.getText().getText());
 	        }
@@ -724,8 +724,8 @@ public class Nuevas extends GPSScreen implements FieldChangeListener, FocusChang
 			txtNombres.setFocus();
 			Dialog.inform("Debe ingresar el nombre de la solicitante");
 			return;
-		}else if(txtAppaterno.getText().getText().length() < 2){
-			txtAppaterno.setFocus();
+		}else if(txtNombres.getText().getText().length() < 2){
+			txtNombres.setFocus();
 			Dialog.inform("El nombre de la solicitante debe tener al menos 2 caracteres");
 			return;
 		}	
@@ -737,13 +737,24 @@ public class Nuevas extends GPSScreen implements FieldChangeListener, FocusChang
 		
         Calendar oCal = Calendar.getInstance();
         Date fecha = oCal.getTime();
-
+        
+        Calendar oCalNac = Calendar.getInstance();
+        oCalNac.setTime(new Date(txtFechaNac.getDate()));
+        
         long lDate1 = Fechas.dateToLongYYYYMMDD(new Date(txtFechaNac.getDate()));
         long lDate2 = Fechas.dateToLongYYYYMMDD(new Date(fecha.getTime()));
+        
+        int diff_year = oCal.get(Calendar.YEAR) - oCalNac.get(Calendar.YEAR);
+        //int diff_month = oCal.get(Calendar.MONTH) - oCalNac.get(Calendar.MONTH);
+        //int diff_day = oCal.get(Calendar.DAY_OF_MONTH) - oCalNac.get(Calendar.DAY_OF_MONTH);
         
 		if ( lDate1 >= lDate2 ) {
 			txtFechaNac.setFocus();
 			Dialog.inform("Debe ingresar una fecha de nacimiento inferior");
+			return;
+		}else if(diff_year<18){
+			txtFechaNac.setFocus();
+			Dialog.inform("Debe ser mayor de edad");
 			return;
 		}
 
@@ -808,6 +819,10 @@ public class Nuevas extends GPSScreen implements FieldChangeListener, FocusChang
 			txtRefFamNombres.setFocus();
 			Dialog.inform("Debe ingresar el nombre de la referencia familiar de la solicitante");
 			return;
+		}else if(txtRefFamNombres.getText().getText().length() < 2){
+			txtRefFamNombres.setFocus();
+			Dialog.inform("El nombre de la referencia familiar debe tener al menos 2 caracteres");
+			return;
 		}
 		if ( txtRefFamNombres.haveNumbers() ) {
 			txtRefFamNombres.setFocus();
@@ -842,6 +857,10 @@ public class Nuevas extends GPSScreen implements FieldChangeListener, FocusChang
 		if ( txtRefNoFamNombres.getText().getText().length() == 0 ) {
 			txtRefNoFamNombres.setFocus();
 			Dialog.inform("Debe ingresar el nombre de la referencia NO familiar de la solicitante");
+			return;
+		}else if(txtRefNoFamNombres.getText().getText().length() < 2){
+			txtRefNoFamNombres.setFocus();
+			Dialog.inform("El nombre de la referencia no familiar debe tener al menos 2 caracteres");
 			return;
 		}
 		if (txtRefNoFamNombres.haveNumbers() ) {
@@ -913,7 +932,7 @@ public class Nuevas extends GPSScreen implements FieldChangeListener, FocusChang
 			if(Dialog.ask(Dialog.D_YES_NO, "¿Se encuentra en el domicilio?") == Dialog.YES) 
 			{
 				
-				Dialog.ask(Dialog.D_OK_CANCEL,"Ubiquese en una zona sin techo de la casa, puede ser la puerta de ingreso");
+				//Dialog.ask(Dialog.D_OK_CANCEL,"Ubiquese en una zona sin techo de la casa, puede ser la puerta de ingreso");
 				
 	    		gpsLon = "" + String.valueOf(GPSScreen.getLongitude()); // JGF: faltaba la conversión a String
 	        	gpsLat = "" + String.valueOf(GPSScreen.getLatitude());
@@ -1056,18 +1075,18 @@ public class Nuevas extends GPSScreen implements FieldChangeListener, FocusChang
             nueva.setHasError(false);
         	Dialog.inform("La incorporación se envío con éxito");
         } else {
+        	progress.close();
             nueva.setHasError(true);
             if ( nueva.getModo().equals("2") ) {
             	nueva.setModo("1");
-            	Dialog.inform("Se produjo un error al enviar la incorporación, se guardará como Borrador. " + nuevas.getResponse());
+            	Dialog.inform("Se produjo un error al enviar la incorporación, se guardará como Borrador. ".concat(nuevas.getCoderror()).concat(" ").concat(nuevas.getMsgerror()) );
             } else {
-            	Dialog.inform("Se produjo un error al enviar la incorporación, " + nuevas.getResponse());
+            	Dialog.inform("Se produjo un error al enviar la incorporación, ".concat(nuevas.getCoderror()).concat(" ").concat(nuevas.getMsgerror()));
             }
         }
         nuevas.commitChanges();
         progress.close();
         nuevas = null;
-		//Dialog.inform("Se grabó con éxito");
 		close();
     }
 
@@ -1370,7 +1389,7 @@ public class Nuevas extends GPSScreen implements FieldChangeListener, FocusChang
 	    		{progress.setTitle("Capturando localización");};
 	    		*/
 				
-				Dialog.ask(Dialog.D_OK_CANCEL,"Ubiquese en una zona sin techo de la casa, puede ser la puerta de ingreso");
+				//Dialog.ask(Dialog.D_OK_CANCEL,"Ubiquese en una zona sin techo de la casa, puede ser la puerta de ingreso");
 				
 	    		gpsLon = "" + String.valueOf(GPSScreen.getLongitude()); // JGF: faltaba la conversión a String
 	        	gpsLat = "" + String.valueOf(GPSScreen.getLatitude());
@@ -1522,6 +1541,7 @@ public class Nuevas extends GPSScreen implements FieldChangeListener, FocusChang
             nueva.setHasError(false);
         	Dialog.inform("La incorporacion se envío con éxito");
         } else {
+        	progress.close();
             nueva.setHasError(true);
             if ( nueva.getModo().equals("2") ) {
             	nueva.setModo("1");

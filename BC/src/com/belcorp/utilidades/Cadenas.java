@@ -10,7 +10,7 @@ import com.belcorp.entidades.bc.Usuario;
 
 public final class Cadenas {
     public static final String TOKEN = "|";
-    public static final String HOST = "200.50.10.197";
+    public static final String HOST = "200.50.10.197"; //Producción
     public static final String URLBASE = "http://" + HOST + "/WebBelcorp/ws/wsGet.asmx";
     public static final String APTA = "1";
 	private static String[] opciones = {"Incorporaciones SC", " Nuevas SC", " Mantenimiento SC", 
