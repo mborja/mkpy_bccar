@@ -50,6 +50,8 @@ public partial class HistorialCrediticio_vistaReingresos : System.Web.UI.Page
                 reingresoBE.regionCodigo = regionCodigo;
                 reingresoBE.zonaCodigo = zonaCodigo;
                 reingresoBE.estadoVerificadoInt = estadoVerificado;
+                reingresoBE.recFechaReingresoIni="";
+                reingresoBE.recFechaReingresoFin = "";
 
                 List<ReingresoBE> listado = new List<ReingresoBE>();
                 listado = reingresosBL.obtenerPorParametros(reingresoBE);
@@ -76,7 +78,8 @@ public partial class HistorialCrediticio_vistaReingresos : System.Web.UI.Page
         String regionCodigo = lblRegionCodigo.Text;
         String zonaCodigo = lblZonaCodigo.Text;
         //
-        String fechaInscripcion = txtFechaInscripcion.Text;
+        String fechaInscripcionIni = txtFechaInscripcionIni.Text;
+        String fechaInscripcionFin = txtFechaInscripcionFin.Text;
         String campanhaInscripcion = txtCampaniaInscripcion.Text;
         String numeroDocumento = txtDocumentoIdentidad.Text;
         String consultoraCodigo = txtCodigoConsultora.Text;
@@ -90,8 +93,8 @@ public partial class HistorialCrediticio_vistaReingresos : System.Web.UI.Page
             ReingresoBE reingresoBE = new ReingresoBE();
             reingresoBE.regionCodigo = regionCodigo;
             reingresoBE.zonaCodigo = zonaCodigo;
-            reingresoBE.recFechaReingreso = fechaInscripcion;
-            //reingresoBE.Fecha = fechaInscripcion;
+            reingresoBE.recFechaReingresoIni = fechaInscripcionIni;
+            reingresoBE.recFechaReingresoFin = fechaInscripcionFin;
             reingresoBE.campanhaInscripcion = campanhaInscripcion;
             reingresoBE.documentoNumero = numeroDocumento;
             reingresoBE.consultoraCodigo = consultoraCodigo;
@@ -99,9 +102,6 @@ public partial class HistorialCrediticio_vistaReingresos : System.Web.UI.Page
             reingresoBE.apellidoMaterno = apellidoMaterno;
             reingresoBE.nombres = nombres;
             reingresoBE.estadoVerificadoInt = estadoVerificado;
-            //reingresoBE.ModoGrabacionInt = modoGrabacion;
-            //apellidoPaterno, apellidoMaterno, nombres, estadoVerificado, modoGrabacion);
-            //incorporacionBL.obtenerPorParametros(regionCodigo, zonaCodigo, fechaInscripcion, campanhaInscripcion, numeroDocumento, consultoraCodigo, apellidoPaterno, apellidoMaterno, nombres, estadoVerificado, modoGrabacion);
 
             List<ReingresoBE> listado = new List<ReingresoBE>();
             listado = reingresosBL.obtenerPorParametros(reingresoBE);
@@ -134,7 +134,7 @@ public partial class HistorialCrediticio_vistaReingresos : System.Web.UI.Page
     {
         String regionCodigo = lblRegionCodigo.Text;
         String zonaCodigo = lblZonaCodigo.Text;
-        String fechaInscripcion = txtFechaInscripcion.Text;
+        String fechaInscripcion = txtFechaInscripcionIni.Text;
         String campanhaInscripcion = txtCampaniaInscripcion.Text;
         String documentoNumero = txtDocumentoIdentidad.Text;
         String consultoraCodigo = txtCodigoConsultora.Text;

@@ -54,6 +54,8 @@ public partial class HistorialCrediticio_vistaIncorporaciones : System.Web.UI.Pa
                 IncorporacionBE incorporacionBE = new IncorporacionBE();
                 //incorporacionBL.obtenerPorParametros(regionCodigo, zonaCodigo, null, null, null, null, null, null, null, estadoVerificado, 2);
                 incorporacionBE.fechaRegistro = "";
+                incorporacionBE.fecRegIni="";
+                incorporacionBE.fecRegFin = "";
                 incorporacionBE.RegionCodigo = regionCodigo;
                 incorporacionBE.ZonaCodigo = zonaCodigo;
                 incorporacionBE.ModoGrabacionInt = modoGrabacion;
@@ -84,7 +86,8 @@ public partial class HistorialCrediticio_vistaIncorporaciones : System.Web.UI.Pa
         String regionCodigo = lblRegionCodigo.Text;
         String zonaCodigo = lblZonaCodigo.Text;
         //
-        String fechaInscripcion = txtFechaInscripcion.Text;
+        String fechaInscripcionIni = txtFechaInscripcionIni.Text;
+        String fechaInscripcionFin = txtFechaInscripcionFin.Text;
         String campanhaInscripcion = txtCampaniaInscripcion.Text;
         String numeroDocumento = txtDocumentoIdentidad.Text;
         String consultoraCodigo = txtCodigoConsultora.Text;
@@ -99,7 +102,9 @@ public partial class HistorialCrediticio_vistaIncorporaciones : System.Web.UI.Pa
             IncorporacionBE incorporacionBE = new IncorporacionBE();
             incorporacionBE.RegionCodigo = regionCodigo;
             incorporacionBE.ZonaCodigo = zonaCodigo;
-            incorporacionBE.fechaRegistro = fechaInscripcion;
+            incorporacionBE.fechaRegistro = fechaInscripcionIni;
+            incorporacionBE.fecRegIni = fechaInscripcionIni;
+            incorporacionBE.fecRegFin = fechaInscripcionFin;
             incorporacionBE.CampanhaInscripcion = campanhaInscripcion;
             incorporacionBE.numeroDocumento = numeroDocumento;
             incorporacionBE.ConsultoraCodigo = consultoraCodigo;
@@ -173,7 +178,7 @@ public partial class HistorialCrediticio_vistaIncorporaciones : System.Web.UI.Pa
     {
         String regionCodigo = lblRegionCodigo.Text;
         String zonaCodigo = lblZonaCodigo.Text;
-        String fechaInscripcion = txtFechaInscripcion.Text;
+        String fechaInscripcion = txtFechaInscripcionIni.Text;
         String campanhaInscripcion = txtCampaniaInscripcion.Text;
         String documentoNumero = txtDocumentoIdentidad.Text;
         String consultoraCodigo = txtCodigoConsultora.Text;

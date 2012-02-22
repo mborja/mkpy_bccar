@@ -73,13 +73,13 @@ public partial class HistorialCrediticio_vistaIncorporaciones : System.Web.UI.Pa
                Mensaje.To.Add(cuenta);
             }
         }
-
-        n = gvIncorporaciones.Rows.Count;
-        for ( i = 0; i < n; i++ ) 
+        try
         {
-
-            if (((CheckBox)gvIncorporaciones.Rows[i].Cells[11].Controls[1]).Checked != ((CheckBox)gvIncorporaciones.Rows[i].Cells[12].Controls[1]).Checked)
+            n = gvIncorporaciones.Rows.Count;
+            for (i = 0; i < n; i++)
             {
+                if (((CheckBox)gvIncorporaciones.Rows[i].Cells[11].Controls[1]).Checked != ((CheckBox)gvIncorporaciones.Rows[i].Cells[12].Controls[1]).Checked)
+                {
                     incorporacionBL.registraVerificacion(int.Parse(gvIncorporaciones.Rows[i].Cells[0].Text));
                     try
                     {
@@ -87,7 +87,8 @@ public partial class HistorialCrediticio_vistaIncorporaciones : System.Web.UI.Pa
                         String gzregion = gvIncorporaciones.Rows[i].Cells[2].Text;
                         String gzzona = gvIncorporaciones.Rows[i].Cells[3].Text;
                         DataTable dtgz = gz.obtener("", gzregion, gzzona);
-                        foreach (DataRow drgz in dtgz.Rows) {
+                        foreach (DataRow drgz in dtgz.Rows)
+                        {
                             Mensaje.To.Add(drgz["email"].ToString());
                         }
                         incorporacionID = gvIncorporaciones.Rows[i].Cells[0].Text;
@@ -97,18 +98,27 @@ public partial class HistorialCrediticio_vistaIncorporaciones : System.Web.UI.Pa
 
                         smtp.Send(Mensaje);
                     }
-                    catch (Exception ex) {
+                    catch (Exception ex)
+                    {
                         Log.lanzarError(ex);
                     }
+                }
             }
+
+            cmdBuscar_Click(sender, e);
+            divMensaje.InnerHtml = "<div id=\"success\">Grabado con exito.</div>";
+
         }
-        
-        cmdBuscar_Click(sender, e);
-
-        correo = null;
-        smtp = null;
-        Mensaje = null;
-
+        catch (Exception ex)
+        {
+            Log.lanzarError(ex);
+        }
+        finally
+        {
+            correo = null;
+            smtp = null;
+            Mensaje = null;
+        }
     }
 
     private void fillElements()
@@ -116,7 +126,9 @@ public partial class HistorialCrediticio_vistaIncorporaciones : System.Web.UI.Pa
         IncorporacionBE incorporacionBE = new IncorporacionBE();
         incorporacionBE.RegionCodigo = txtRegion.Text;
         incorporacionBE.ZonaCodigo = txtZona.Text;
-        incorporacionBE.fechaRegistro = txtFechaInscripcion.Text;
+        incorporacionBE.fechaRegistro = txtFechaIniInscripcion.Text;
+        incorporacionBE.fecRegIni = txtFechaIniInscripcion.Text;
+        incorporacionBE.fecRegFin = txtFechaFinInscripcion.Text;
         incorporacionBE.CampanhaInscripcion = txtCampaniaInscripcion.Text;
         incorporacionBE.numeroDocumento = txtDocumentoIdentidad.Text;
         incorporacionBE.ConsultoraCodigo = txtCodigoConsultora.Text;
@@ -205,13 +217,20 @@ public partial class HistorialCrediticio_vistaIncorporaciones : System.Web.UI.Pa
         rpt.Load(Server.MapPath("../CrystalReports/rcSolicitudCredito.rpt"));
         rpt.SetDatabaseLogon("", "", ".", db_databaseName);
         rpt.SetParameterValue("@incorporacionID", Convert.ToInt32(incorporacionID));
-
-
         rpt.ExportToDisk(ExportFormatType.PortableDocFormat, nombre);
-
-        return nombre;
-    
+        return nombre;    
     }
 
 
+    protected void gvIncorporaciones_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        if (e.Row.RowType == DataControlRowType.DataRow )
+        {
+            // Display the company name in italics.
+            //int ultimo = e.Row.Cells.Count-1;
+            if (e.Row.Cells[7].Text!="&nbsp;") e.Row.Cells[11].Enabled = false;
+
+        }
+
+    }
 }

@@ -21,7 +21,12 @@
         }
         $(function() {
             $.datepicker.setDefaults($.datepicker.regional["es"]);
-            $("#ctl00_ContentPlaceHolder1_txtFechaInscripcion").datepicker({
+            $("#ctl00_ContentPlaceHolder1_txtFechaInscripcionIni").datepicker({
+                showOn: "button",
+                buttonImage: "../img/calendar.gif",
+                buttonImageOnly: true
+            });
+            $("#ctl00_ContentPlaceHolder1_txtFechaInscripcionFin").datepicker({
                 showOn: "button",
                 buttonImage: "../img/calendar.gif",
                 buttonImageOnly: true
@@ -57,7 +62,7 @@
             </tr>
             <tr>
                 <td align="left" style="width: 10%">
-                            <asp:Label ID="lblRegion" runat="server" Text="Región:" 
+                            <asp:Label ID="lblRegion" runat="server" Text="Región GZ:" 
                                 CssClass="labelEs"></asp:Label> 
                         </td>
                 <td align="left">
@@ -70,7 +75,7 @@
                     &nbsp;</td>
                 <td align="left">
                             <asp:Label ID="lblZona" 
-                                runat="server" Text="Zona:" CssClass="labelEs"></asp:Label>  
+                                runat="server" Text="Zona GZ:" CssClass="labelEs"></asp:Label>  
                                 </td>
                 <td align="left">
                     <asp:Label ID="lblZonaCodigo" runat="server" 
@@ -79,11 +84,11 @@
             </tr>
             <tr>
                 <td align="left">
-                            <asp:Label ID="lblFechInscripcion"  runat="server" Text="Fecha de reingreso:" 
+                            <asp:Label ID="lblFechInscripcion"  runat="server" Text="Fecha Inicial de reingreso:" 
                                 CssClass="labelEs"></asp:Label> 
                         </td>
                 <td align="left">
-                    <asp:TextBox ID="txtFechaInscripcion"  Width="80px" 
+                    <asp:TextBox ID="txtFechaInscripcionIni"  Width="80px" 
                         MaxLength="10" runat="server"></asp:TextBox>
                 </td>
                 <td>
@@ -92,7 +97,7 @@
                     &nbsp;</td>
                 <td align="left">
                             <asp:Label ID="lblCampInscripcion" 
-                                runat="server" Text="Campaña de inscripción:" CssClass="labelEs"></asp:Label>  
+                                runat="server" Text="Campaña de incorporación:" CssClass="labelEs"></asp:Label>  
                     </td>
                 <td align="left">
                     <asp:TextBox ID="txtCampaniaInscripcion" onkeypress="return onlyNumbers();" runat="server"></asp:TextBox>
@@ -100,12 +105,12 @@
             </tr>
             <tr>
                 <td align="left">
-                            <asp:Label ID="lblDocIdentidad" 
-                                runat="server" Text="Documento de identidad:" CssClass="labelEs"></asp:Label> </td>
+                            <asp:Label ID="lblFechInscripcion0"  runat="server" Text="Fecha Final de reingreso:" 
+                                CssClass="labelEs"></asp:Label> 
+                </td>
                 <td align="left">
-                    <asp:Label ID="lblPaisTipoDocumento" runat="server" 
-                        style="font-family: Verdana; font-size: x-small; font-weight: 700"></asp:Label>
-                    <asp:TextBox ID="txtDocumentoIdentidad" onkeypress="return onlyNumbers();" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtFechaInscripcionFin"  Width="80px" 
+                        MaxLength="10" runat="server"></asp:TextBox>
                 </td>
                 <td>
                             &nbsp;</td>
@@ -121,44 +126,50 @@
             </tr>
             <tr>
                 <td align="left">
-                            <asp:Label ID="lblApePaterno" runat="server" Text="Apellido paterno:" 
-                                CssClass="labelEs"></asp:Label> </td>
+                            <asp:Label ID="lblDocIdentidad" 
+                                runat="server" Text="Documento de identidad:" CssClass="labelEs"></asp:Label> </td>
                 <td align="left">
-                    <asp:TextBox ID="txtApellidoPaterno" runat="server"></asp:TextBox>
+                    <asp:Label ID="lblPaisTipoDocumento" runat="server" 
+                        style="font-family: Verdana; font-size: x-small; font-weight: 700"></asp:Label>
                 </td>
                 <td align="left">
-                            <asp:Label ID="lblApeMaterno" runat="server" Text="Apellido materno:" 
-                                CssClass="labelEs"></asp:Label>  
+                    <asp:TextBox ID="txtDocumentoIdentidad" onkeypress="return onlyNumbers();" runat="server"></asp:TextBox>
                                 </td>
                 <td align="left">
-                    <asp:TextBox ID="txtApellidoMaterno" runat="server"></asp:TextBox>
-                </td>
-                <td align="left">
-                            <asp:Label ID="lblNombres" runat="server" Text="Nombres:" CssClass="labelEs"></asp:Label>  
-                        </td>
-                <td align="left">
-                    <asp:TextBox ID="txtNombres" runat="server"></asp:TextBox>
-                </td>
-            </tr>
-            <tr>
-                <td>
                     &nbsp;</td>
-                <td>
-                    &nbsp;</td>
-                <td>
-                        
-                    </td>
-                <td>
-                </td>
                 <td align="left">
                             <asp:Label ID="lblEstado" 
-                                runat="server" Text="Estado:" CssClass="labelEs"></asp:Label> </td>
+                                runat="server" Text="Estado:" CssClass="labelEs"></asp:Label>   
+                        </td>
                 <td align="left">
                     <asp:DropDownList ID="ddlEstadoVerificado" runat="server" Enabled="False">
                         <asp:ListItem Value="2">Todos</asp:ListItem>
                         <asp:ListItem Value="1">Verificado</asp:ListItem>
                         <asp:ListItem Value="0">No Verificado</asp:ListItem>
                     </asp:DropDownList>
+                </td>
+            </tr>
+            <tr>
+                <td style="height: 12px">
+                            <asp:Label ID="lblApePaterno" runat="server" Text="Apellido paterno:" 
+                                CssClass="labelEs"></asp:Label> </td>
+                <td style="height: 12px">
+                    <asp:TextBox ID="txtApellidoPaterno" runat="server"></asp:TextBox>
+                </td>
+                <td style="height: 12px">
+                        
+                            <asp:Label ID="lblApeMaterno" runat="server" Text="Apellido materno:" 
+                                CssClass="labelEs"></asp:Label>  
+                        
+                    </td>
+                <td style="height: 12px">
+                    <asp:TextBox ID="txtApellidoMaterno" runat="server"></asp:TextBox>
+                </td>
+                <td align="left" style="height: 12px">
+                            <asp:Label ID="lblNombres" runat="server" Text="Nombres:" CssClass="labelEs"></asp:Label>  
+                </td>
+                <td align="left" style="height: 12px">
+                    <asp:TextBox ID="txtNombres" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>

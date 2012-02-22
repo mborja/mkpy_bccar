@@ -73,7 +73,8 @@ public partial class HistorialCrediticio_vistaSeguimientos : System.Web.UI.Page
         String regionCodigo = lblRegionCodigo.Text;
         String zonaCodigo = lblZonaCodigo.Text;
         //
-        String fechaInscripcion = txtFechaInscripcion.Text;
+        String fechaInscripcionIni = txtFechaInscripcionIni.Text;
+        String fechaInscripcionFin = txtFechaInscripcionFin.Text;
         String campanhaInscripcion = txtCampaniaInscripcion.Text;
         String numeroDocumento = txtDocumentoIdentidad.Text;
         String consultoraCodigo = txtCodigoConsultora.Text;
@@ -88,7 +89,9 @@ public partial class HistorialCrediticio_vistaSeguimientos : System.Web.UI.Page
             SeguimientoBE seguimientoBE = new SeguimientoBE();
             seguimientoBE.regionCodigo = regionCodigo;
             seguimientoBE.ZonaCodigo = zonaCodigo;
-            seguimientoBE.FechaIngreso = fechaInscripcion;
+            seguimientoBE.FechaIngresoIni = fechaInscripcionIni;
+            seguimientoBE.FechaIngresoFin = fechaInscripcionFin;
+
             seguimientoBE.Campanha = campanhaInscripcion;
             seguimientoBE.documentoNumero = numeroDocumento;
             seguimientoBE.ConsultoraCodigo = consultoraCodigo;
@@ -157,7 +160,7 @@ public partial class HistorialCrediticio_vistaSeguimientos : System.Web.UI.Page
     {
         String regionCodigo = lblRegionCodigo.Text;
         String zonaCodigo = lblZonaCodigo.Text;
-        String fechaInscripcion = txtFechaInscripcion.Text;
+        String fechaInscripcion = txtFechaInscripcionIni.Text;
         String campanhaInscripcion = txtCampaniaInscripcion.Text;
         String documentoNumero = txtDocumentoIdentidad.Text;
         String consultoraCodigo = txtCodigoConsultora.Text;

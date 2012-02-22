@@ -42,7 +42,11 @@ public partial class HistorialCrediticio_vistaReingreso : System.Web.UI.Page
         ReingresoBE r = new ReingresoBE();
         r.regionCodigo = (txtRegion.Text.Trim().Length == 0) ? null : txtRegion.Text.Trim();
         r.zonaCodigo = (txtZona.Text.Trim().Length == 0) ? null : txtZona.Text.Trim();
-        r.recFechaReingreso = (txtFechaReingreso.Text.Trim().Length == 0) ? null : txtFechaReingreso.Text.Trim();
+        
+        //r.recFechaReingreso = (txtFechaReingreso.Text.Trim().Length == 0) ? null : txtFechaReingreso.Text.Trim();
+        r.recFechaReingresoIni = txtFechaReingresoIni.Text;
+        r.recFechaReingresoFin = txtFechaReingresoFin.Text;
+        
         r.campanhaInscripcion = (txtCampanhaInscripcion.Text.Trim().Length == 0) ? null : txtCampanhaInscripcion.Text.Trim();
         r.campanhaPrimeraCompra = (txtCampanhaFacturacion.Text.Trim().Length == 0) ? null : txtCampanhaFacturacion.Text.Trim();
         r.documentoNumero = (txtDocumentoIdentidad.Text.Trim().Length == 0) ? null : txtDocumentoIdentidad.Text.Trim();
@@ -169,6 +173,7 @@ public partial class HistorialCrediticio_vistaReingreso : System.Web.UI.Page
             }
         }
         cmdBuscar_Click(sender, e);
+        divMensaje.InnerHtml = "<div id=\"success\">Grabado con exito.</div>";
     }
 
     protected void gvReingreso_RowCommand(object sender, GridViewCommandEventArgs e)

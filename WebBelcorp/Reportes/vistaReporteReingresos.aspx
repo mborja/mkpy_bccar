@@ -51,7 +51,7 @@
                 <td >
                     &nbsp;</td>
                 <td align="left">
-                            <asp:Label ID="lblRegion" runat="server" Text="Región:" CssClass="labelEs"></asp:Label> 
+                            <asp:Label ID="lblRegion" runat="server" Text="Región GZ:" CssClass="labelEs"></asp:Label> 
                         </td>
                 <td align="left">
                     <asp:TextBox ID="txtRegionCodigo" onkeypress="return onlyNumbers();" runat="server" MaxLength="2"></asp:TextBox>
@@ -61,7 +61,7 @@
                 <td >
                     &nbsp;</td>
                 <td align="left">
-                            <asp:Label ID="lblZona" runat="server" Text="Zona:" 
+                            <asp:Label ID="lblZona" runat="server" Text="Zona GZ:" 
                                 CssClass="labelEs"></asp:Label> 
                         </td>
                 <td align="left">
@@ -116,8 +116,8 @@
             onrowcreated="gvReingreso_RowCreated" PageSize="1000" >
             <RowStyle BackColor="#DBDADA" CssClass="rowstablas" />
             <Columns>
-                <asp:BoundField DataField="regionCodigo" HeaderText="Región" />
-                <asp:BoundField DataField="zonaCodigo" HeaderText="Zona" />
+                <asp:BoundField DataField="regionCodigo" HeaderText="Región GZ" />
+                <asp:BoundField DataField="zonaCodigo" HeaderText="Zona GZ" />
                 <asp:BoundField DataField="estadoVerificadoString" HeaderText="Verificado" />
                 <asp:ButtonField CommandName="VerDetalle" DataTextField="cantidad" 
                     HeaderText="Cantidad" />

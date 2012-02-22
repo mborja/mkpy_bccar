@@ -1,0 +1,218 @@
+﻿/* Estilos - General */
+.menuie8
+{
+	z-index: 50;
+}
+.labelEs
+{
+	font-size: 12px;
+	font-family:Arial;
+	color:#000000;
+	text-align:left;
+}
+.linkEs
+{
+	/*font-size: 12px;*/
+	font-family:Arial;
+	/*color:#000000;*/
+	text-align:center;
+}
+.labelTitulo
+{
+	font-size:xx-large;
+	font-family:Arial;
+	font-weight:700;
+	color:#778391;
+	
+}
+
+.labelTituloCentro
+{
+	text-align:center;
+	font-size:xx-large;
+	font-family:Arial;
+	font-weight:700;
+	color:#778391;
+	
+}
+
+.labelSubTitulo
+{
+	text-align:left;
+	font-size:x-large;
+	font-family:Arial;
+	font-weight:bold;
+	color:#778391;
+	
+}
+.labelSubTituloDetalle
+{
+	text-align:left;
+	font-size:large;
+	font-family:Arial;
+	font-weight:bold;
+	color:#778391;
+	
+}
+	
+.ComboEs
+{
+	background-color:#f4f4f4;
+	border:1px #778391;
+	text-align:left;
+	font-size: 12px;
+	font-family:Arial;
+}
+.ButtonEs
+{
+	background-color:#1ab1e4;
+	border:1px #009cd1;
+	font-size:12px;
+	font-family:Arial;
+	text-align:center;
+	width:80px;	
+	color:White;
+	margin: 0 5px 1px 5px;
+}
+.ButtonEs:hover
+{
+	background-color:#778391;
+	border:1px #767676;	
+	font-size: 12px;
+	font-family:Arial;
+	text-align:center;
+	width:80px;	
+	color:White;
+}
+
+.ButtonEsCarga
+{
+	background-color:#1ab1e4;
+	border:1px #009cd1;
+	font-size:12px;
+	font-family:Arial;
+	text-align:center;
+	width:105px;	
+	color:White;
+}
+.ButtonEsCarga:hover
+{
+	background-color:#778391;
+	border:1px #767676;	
+}
+
+.LinkButtonEs
+{
+	color:#1ab1e4;
+	text-align:right;
+	text-decoration:none;
+	font-family:Arial;
+	font-size:12px;
+}
+
+.LinkButtonEs:hover
+{
+	color:#778391;
+	font-size:12px;
+}	
+
+.textEs
+{
+	background-color:#f4f4f4;
+	border:1px #778391;
+	text-align:left;
+	font-size: 12px;
+	font-family:Arial;
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
+.lblMsjEs
+{
+	font-weight:bold; 
+	color:#FF3300; 
+    font-size: large;
+    font-family:Arial;
+}
+
+.lblMsjCargaError
+{
+	font-weight:bold;
+	color:#FF3300;
+	font-size:12px;
+	font-family:Arial;
+}
+
+.linkButtonFuncEs
+{
+	color:#1ab1e4;
+	text-align:right;
+	text-decoration:none;
+	font-family:Arial;
+	font-size:14px;
+	font-weight:bold;
+}
+
+.linkButtonFuncEs:hover
+{
+	color:#778391;
+}	
+
+.RowsTablas
+{
+	border:1px #e2e2e2;	
+}		
+
+/* Estilos del Login */
+
+
+.labelLogin
+{
+	font-size: 10px;
+	font-family:Arial;
+	color:#000000;
+	text-align:right;
+}
+
+.textLogin
+{
+	Font-Size:0.8em;
+	font-family:Arial;	
+	background-color:#f4f4f4;
+	border:1px #778391;
+	text-align:left;
+	margin-left: 0px;
+}
+
+.buttonLogin
+{
+	background-color:#1ab1e4;
+	border:1px #009cd1;
+	font-family:Arial;
+	font-size:0.8em;
+	color:White;
+	
+                                                                        
+} 
+
+.buttonLogin:hover
+{
+	background-color:#778391;
+	border:1px #767676;	
+} 	
+.comboLogin
+{
+	background-color:#f4f4f4;
+	border:1px #778391;
+	text-align:left;
+	font-size: 12px;
+	font-family:Arial;
+}
+
+.validateLabel
+{
+	font-size: 13px;
+	font-family:Arial;
+	color: Red;
+	/*text-align:center;*/
+}

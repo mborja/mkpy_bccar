@@ -51,13 +51,13 @@
             </tr>
             <tr>
                 <td align="left">
-                        <asp:Label ID="Label2" runat="server" Text="Región :" CssClass="labelEs" ></asp:Label>
+                        <asp:Label ID="Label2" runat="server" Text="Región GZ:" CssClass="labelEs" ></asp:Label>
                         </td>
                 <td align="left">
                     <asp:TextBox ID="txtRegion" runat="server" onkeypress="return onlyNumbers();" MaxLength="2"></asp:TextBox>
                 </td>
                 <td align="left">
-                        <asp:Label ID="lblZona" runat="server" Text="Zona :" CssClass="labelEs"></asp:Label>
+                        <asp:Label ID="lblZona" runat="server" Text="Zona GZ:" CssClass="labelEs"></asp:Label>
                     </td>
                 <td align="left">
                     <asp:TextBox ID="txtZona" runat="server" onkeypress="return onlyNumbers();" MaxLength="6"></asp:TextBox>
@@ -122,8 +122,8 @@
             onrowcreated="gvIncorporaciones_RowCreated" PageSize="1000" >
             <RowStyle BackColor="#DBDADA" CssClass="rowstablas" />
             <Columns>
-                <asp:BoundField DataField="regionCodigo" HeaderText="Región" />
-                <asp:BoundField DataField="zonaCodigo" HeaderText="Zona" />
+                <asp:BoundField DataField="regionCodigo" HeaderText="Región GZ" />
+                <asp:BoundField DataField="zonaCodigo" HeaderText="Zona GZ" />
                 <asp:BoundField DataField="modoGrabacionString" HeaderText="Modo Grabación" />
                 <asp:BoundField DataField="estadoVerificadoString" HeaderText="Verificado" />
                 <asp:ButtonField CommandName="VerDetalle" DataTextField="cantidad" 

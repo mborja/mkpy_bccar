@@ -1,0 +1,947 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="Validacion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IDPAIS" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="APPID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PIN" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="IMSI" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ZONA" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidacionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ValidacionResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TipoDocumento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="APPID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PIN" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="IMSI" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TipoDocumentoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TipoDocumentoResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EstadoCivil">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="APPID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PIN" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="IMSI" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EstadoCivilResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EstadoCivilResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="NivelEducativo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="APPID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PIN" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="IMSI" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="NivelEducativoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NivelEducativoResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="OtrasMarcas">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="APPID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PIN" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="IMSI" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="OtrasMarcasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="OtrasMarcasResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TiposdeVinculo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="APPID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PIN" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="IMSI" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TiposdeVinculoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TiposdeVinculoResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TiposdeContactos">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="APPID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PIN" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="IMSI" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TiposdeContactosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TiposdeContactosResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistroNuevas">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Cadena" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistroNuevasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RegistroNuevasResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistroSeguimiento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Cadena" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistroSeguimientoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RegistroSeguimientoResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistroReingreso">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Cadena" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistroReingresoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RegistroReingresoResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ValidacionSoapIn">
+    <wsdl:part name="parameters" element="tns:Validacion" />
+  </wsdl:message>
+  <wsdl:message name="ValidacionSoapOut">
+    <wsdl:part name="parameters" element="tns:ValidacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="TipoDocumentoSoapIn">
+    <wsdl:part name="parameters" element="tns:TipoDocumento" />
+  </wsdl:message>
+  <wsdl:message name="TipoDocumentoSoapOut">
+    <wsdl:part name="parameters" element="tns:TipoDocumentoResponse" />
+  </wsdl:message>
+  <wsdl:message name="EstadoCivilSoapIn">
+    <wsdl:part name="parameters" element="tns:EstadoCivil" />
+  </wsdl:message>
+  <wsdl:message name="EstadoCivilSoapOut">
+    <wsdl:part name="parameters" element="tns:EstadoCivilResponse" />
+  </wsdl:message>
+  <wsdl:message name="NivelEducativoSoapIn">
+    <wsdl:part name="parameters" element="tns:NivelEducativo" />
+  </wsdl:message>
+  <wsdl:message name="NivelEducativoSoapOut">
+    <wsdl:part name="parameters" element="tns:NivelEducativoResponse" />
+  </wsdl:message>
+  <wsdl:message name="OtrasMarcasSoapIn">
+    <wsdl:part name="parameters" element="tns:OtrasMarcas" />
+  </wsdl:message>
+  <wsdl:message name="OtrasMarcasSoapOut">
+    <wsdl:part name="parameters" element="tns:OtrasMarcasResponse" />
+  </wsdl:message>
+  <wsdl:message name="TiposdeVinculoSoapIn">
+    <wsdl:part name="parameters" element="tns:TiposdeVinculo" />
+  </wsdl:message>
+  <wsdl:message name="TiposdeVinculoSoapOut">
+    <wsdl:part name="parameters" element="tns:TiposdeVinculoResponse" />
+  </wsdl:message>
+  <wsdl:message name="TiposdeContactosSoapIn">
+    <wsdl:part name="parameters" element="tns:TiposdeContactos" />
+  </wsdl:message>
+  <wsdl:message name="TiposdeContactosSoapOut">
+    <wsdl:part name="parameters" element="tns:TiposdeContactosResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegistroNuevasSoapIn">
+    <wsdl:part name="parameters" element="tns:RegistroNuevas" />
+  </wsdl:message>
+  <wsdl:message name="RegistroNuevasSoapOut">
+    <wsdl:part name="parameters" element="tns:RegistroNuevasResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegistroSeguimientoSoapIn">
+    <wsdl:part name="parameters" element="tns:RegistroSeguimiento" />
+  </wsdl:message>
+  <wsdl:message name="RegistroSeguimientoSoapOut">
+    <wsdl:part name="parameters" element="tns:RegistroSeguimientoResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegistroReingresoSoapIn">
+    <wsdl:part name="parameters" element="tns:RegistroReingreso" />
+  </wsdl:message>
+  <wsdl:message name="RegistroReingresoSoapOut">
+    <wsdl:part name="parameters" element="tns:RegistroReingresoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ValidacionHttpGetIn">
+    <wsdl:part name="IDPAIS" type="s:string" />
+    <wsdl:part name="APPID" type="s:string" />
+    <wsdl:part name="PIN" type="s:string" />
+    <wsdl:part name="IMSI" type="s:string" />
+    <wsdl:part name="ZONA" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ValidacionHttpGetOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="TipoDocumentoHttpGetIn">
+    <wsdl:part name="APPID" type="s:string" />
+    <wsdl:part name="PIN" type="s:string" />
+    <wsdl:part name="IMSI" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TipoDocumentoHttpGetOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="EstadoCivilHttpGetIn">
+    <wsdl:part name="APPID" type="s:string" />
+    <wsdl:part name="PIN" type="s:string" />
+    <wsdl:part name="IMSI" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EstadoCivilHttpGetOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="NivelEducativoHttpGetIn">
+    <wsdl:part name="APPID" type="s:string" />
+    <wsdl:part name="PIN" type="s:string" />
+    <wsdl:part name="IMSI" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="NivelEducativoHttpGetOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="OtrasMarcasHttpGetIn">
+    <wsdl:part name="APPID" type="s:string" />
+    <wsdl:part name="PIN" type="s:string" />
+    <wsdl:part name="IMSI" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="OtrasMarcasHttpGetOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="TiposdeVinculoHttpGetIn">
+    <wsdl:part name="APPID" type="s:string" />
+    <wsdl:part name="PIN" type="s:string" />
+    <wsdl:part name="IMSI" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TiposdeVinculoHttpGetOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="TiposdeContactosHttpGetIn">
+    <wsdl:part name="APPID" type="s:string" />
+    <wsdl:part name="PIN" type="s:string" />
+    <wsdl:part name="IMSI" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TiposdeContactosHttpGetOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="RegistroNuevasHttpGetIn">
+    <wsdl:part name="Cadena" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RegistroNuevasHttpGetOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="RegistroSeguimientoHttpGetIn">
+    <wsdl:part name="Cadena" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RegistroSeguimientoHttpGetOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="RegistroReingresoHttpGetIn">
+    <wsdl:part name="Cadena" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RegistroReingresoHttpGetOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="ValidacionHttpPostIn">
+    <wsdl:part name="IDPAIS" type="s:string" />
+    <wsdl:part name="APPID" type="s:string" />
+    <wsdl:part name="PIN" type="s:string" />
+    <wsdl:part name="IMSI" type="s:string" />
+    <wsdl:part name="ZONA" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ValidacionHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="TipoDocumentoHttpPostIn">
+    <wsdl:part name="APPID" type="s:string" />
+    <wsdl:part name="PIN" type="s:string" />
+    <wsdl:part name="IMSI" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TipoDocumentoHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="EstadoCivilHttpPostIn">
+    <wsdl:part name="APPID" type="s:string" />
+    <wsdl:part name="PIN" type="s:string" />
+    <wsdl:part name="IMSI" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EstadoCivilHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="NivelEducativoHttpPostIn">
+    <wsdl:part name="APPID" type="s:string" />
+    <wsdl:part name="PIN" type="s:string" />
+    <wsdl:part name="IMSI" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="NivelEducativoHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="OtrasMarcasHttpPostIn">
+    <wsdl:part name="APPID" type="s:string" />
+    <wsdl:part name="PIN" type="s:string" />
+    <wsdl:part name="IMSI" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="OtrasMarcasHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="TiposdeVinculoHttpPostIn">
+    <wsdl:part name="APPID" type="s:string" />
+    <wsdl:part name="PIN" type="s:string" />
+    <wsdl:part name="IMSI" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TiposdeVinculoHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="TiposdeContactosHttpPostIn">
+    <wsdl:part name="APPID" type="s:string" />
+    <wsdl:part name="PIN" type="s:string" />
+    <wsdl:part name="IMSI" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TiposdeContactosHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="RegistroNuevasHttpPostIn">
+    <wsdl:part name="Cadena" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RegistroNuevasHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="RegistroSeguimientoHttpPostIn">
+    <wsdl:part name="Cadena" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RegistroSeguimientoHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="RegistroReingresoHttpPostIn">
+    <wsdl:part name="Cadena" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RegistroReingresoHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:portType name="wsGetSoap">
+    <wsdl:operation name="Validacion">
+      <wsdl:input message="tns:ValidacionSoapIn" />
+      <wsdl:output message="tns:ValidacionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TipoDocumento">
+      <wsdl:input message="tns:TipoDocumentoSoapIn" />
+      <wsdl:output message="tns:TipoDocumentoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EstadoCivil">
+      <wsdl:input message="tns:EstadoCivilSoapIn" />
+      <wsdl:output message="tns:EstadoCivilSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="NivelEducativo">
+      <wsdl:input message="tns:NivelEducativoSoapIn" />
+      <wsdl:output message="tns:NivelEducativoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="OtrasMarcas">
+      <wsdl:input message="tns:OtrasMarcasSoapIn" />
+      <wsdl:output message="tns:OtrasMarcasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TiposdeVinculo">
+      <wsdl:input message="tns:TiposdeVinculoSoapIn" />
+      <wsdl:output message="tns:TiposdeVinculoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TiposdeContactos">
+      <wsdl:input message="tns:TiposdeContactosSoapIn" />
+      <wsdl:output message="tns:TiposdeContactosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistroNuevas">
+      <wsdl:input message="tns:RegistroNuevasSoapIn" />
+      <wsdl:output message="tns:RegistroNuevasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistroSeguimiento">
+      <wsdl:input message="tns:RegistroSeguimientoSoapIn" />
+      <wsdl:output message="tns:RegistroSeguimientoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistroReingreso">
+      <wsdl:input message="tns:RegistroReingresoSoapIn" />
+      <wsdl:output message="tns:RegistroReingresoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="wsGetHttpGet">
+    <wsdl:operation name="Validacion">
+      <wsdl:input message="tns:ValidacionHttpGetIn" />
+      <wsdl:output message="tns:ValidacionHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TipoDocumento">
+      <wsdl:input message="tns:TipoDocumentoHttpGetIn" />
+      <wsdl:output message="tns:TipoDocumentoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EstadoCivil">
+      <wsdl:input message="tns:EstadoCivilHttpGetIn" />
+      <wsdl:output message="tns:EstadoCivilHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="NivelEducativo">
+      <wsdl:input message="tns:NivelEducativoHttpGetIn" />
+      <wsdl:output message="tns:NivelEducativoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="OtrasMarcas">
+      <wsdl:input message="tns:OtrasMarcasHttpGetIn" />
+      <wsdl:output message="tns:OtrasMarcasHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TiposdeVinculo">
+      <wsdl:input message="tns:TiposdeVinculoHttpGetIn" />
+      <wsdl:output message="tns:TiposdeVinculoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TiposdeContactos">
+      <wsdl:input message="tns:TiposdeContactosHttpGetIn" />
+      <wsdl:output message="tns:TiposdeContactosHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistroNuevas">
+      <wsdl:input message="tns:RegistroNuevasHttpGetIn" />
+      <wsdl:output message="tns:RegistroNuevasHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistroSeguimiento">
+      <wsdl:input message="tns:RegistroSeguimientoHttpGetIn" />
+      <wsdl:output message="tns:RegistroSeguimientoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistroReingreso">
+      <wsdl:input message="tns:RegistroReingresoHttpGetIn" />
+      <wsdl:output message="tns:RegistroReingresoHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="wsGetHttpPost">
+    <wsdl:operation name="Validacion">
+      <wsdl:input message="tns:ValidacionHttpPostIn" />
+      <wsdl:output message="tns:ValidacionHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TipoDocumento">
+      <wsdl:input message="tns:TipoDocumentoHttpPostIn" />
+      <wsdl:output message="tns:TipoDocumentoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EstadoCivil">
+      <wsdl:input message="tns:EstadoCivilHttpPostIn" />
+      <wsdl:output message="tns:EstadoCivilHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="NivelEducativo">
+      <wsdl:input message="tns:NivelEducativoHttpPostIn" />
+      <wsdl:output message="tns:NivelEducativoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="OtrasMarcas">
+      <wsdl:input message="tns:OtrasMarcasHttpPostIn" />
+      <wsdl:output message="tns:OtrasMarcasHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TiposdeVinculo">
+      <wsdl:input message="tns:TiposdeVinculoHttpPostIn" />
+      <wsdl:output message="tns:TiposdeVinculoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TiposdeContactos">
+      <wsdl:input message="tns:TiposdeContactosHttpPostIn" />
+      <wsdl:output message="tns:TiposdeContactosHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistroNuevas">
+      <wsdl:input message="tns:RegistroNuevasHttpPostIn" />
+      <wsdl:output message="tns:RegistroNuevasHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistroSeguimiento">
+      <wsdl:input message="tns:RegistroSeguimientoHttpPostIn" />
+      <wsdl:output message="tns:RegistroSeguimientoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistroReingreso">
+      <wsdl:input message="tns:RegistroReingresoHttpPostIn" />
+      <wsdl:output message="tns:RegistroReingresoHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="wsGetSoap" type="tns:wsGetSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Validacion">
+      <soap:operation soapAction="http://tempuri.org/Validacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TipoDocumento">
+      <soap:operation soapAction="http://tempuri.org/TipoDocumento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EstadoCivil">
+      <soap:operation soapAction="http://tempuri.org/EstadoCivil" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NivelEducativo">
+      <soap:operation soapAction="http://tempuri.org/NivelEducativo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OtrasMarcas">
+      <soap:operation soapAction="http://tempuri.org/OtrasMarcas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TiposdeVinculo">
+      <soap:operation soapAction="http://tempuri.org/TiposdeVinculo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TiposdeContactos">
+      <soap:operation soapAction="http://tempuri.org/TiposdeContactos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistroNuevas">
+      <soap:operation soapAction="http://tempuri.org/RegistroNuevas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistroSeguimiento">
+      <soap:operation soapAction="http://tempuri.org/RegistroSeguimiento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistroReingreso">
+      <soap:operation soapAction="http://tempuri.org/RegistroReingreso" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsGetSoap12" type="tns:wsGetSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Validacion">
+      <soap12:operation soapAction="http://tempuri.org/Validacion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TipoDocumento">
+      <soap12:operation soapAction="http://tempuri.org/TipoDocumento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EstadoCivil">
+      <soap12:operation soapAction="http://tempuri.org/EstadoCivil" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NivelEducativo">
+      <soap12:operation soapAction="http://tempuri.org/NivelEducativo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OtrasMarcas">
+      <soap12:operation soapAction="http://tempuri.org/OtrasMarcas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TiposdeVinculo">
+      <soap12:operation soapAction="http://tempuri.org/TiposdeVinculo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TiposdeContactos">
+      <soap12:operation soapAction="http://tempuri.org/TiposdeContactos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistroNuevas">
+      <soap12:operation soapAction="http://tempuri.org/RegistroNuevas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistroSeguimiento">
+      <soap12:operation soapAction="http://tempuri.org/RegistroSeguimiento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistroReingreso">
+      <soap12:operation soapAction="http://tempuri.org/RegistroReingreso" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsGetHttpGet" type="tns:wsGetHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="Validacion">
+      <http:operation location="/Validacion" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TipoDocumento">
+      <http:operation location="/TipoDocumento" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EstadoCivil">
+      <http:operation location="/EstadoCivil" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NivelEducativo">
+      <http:operation location="/NivelEducativo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OtrasMarcas">
+      <http:operation location="/OtrasMarcas" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TiposdeVinculo">
+      <http:operation location="/TiposdeVinculo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TiposdeContactos">
+      <http:operation location="/TiposdeContactos" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistroNuevas">
+      <http:operation location="/RegistroNuevas" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistroSeguimiento">
+      <http:operation location="/RegistroSeguimiento" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistroReingreso">
+      <http:operation location="/RegistroReingreso" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsGetHttpPost" type="tns:wsGetHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="Validacion">
+      <http:operation location="/Validacion" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TipoDocumento">
+      <http:operation location="/TipoDocumento" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EstadoCivil">
+      <http:operation location="/EstadoCivil" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NivelEducativo">
+      <http:operation location="/NivelEducativo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OtrasMarcas">
+      <http:operation location="/OtrasMarcas" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TiposdeVinculo">
+      <http:operation location="/TiposdeVinculo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TiposdeContactos">
+      <http:operation location="/TiposdeContactos" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistroNuevas">
+      <http:operation location="/RegistroNuevas" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistroSeguimiento">
+      <http:operation location="/RegistroSeguimiento" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistroReingreso">
+      <http:operation location="/RegistroReingreso" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="wsGet">
+    <wsdl:port name="wsGetSoap" binding="tns:wsGetSoap">
+      <soap:address location="http://localhost:60417/WebBelcorp/ws/wsGet.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wsGetSoap12" binding="tns:wsGetSoap12">
+      <soap12:address location="http://localhost:60417/WebBelcorp/ws/wsGet.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wsGetHttpGet" binding="tns:wsGetHttpGet">
+      <http:address location="http://localhost:60417/WebBelcorp/ws/wsGet.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wsGetHttpPost" binding="tns:wsGetHttpPost">
+      <http:address location="http://localhost:60417/WebBelcorp/ws/wsGet.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

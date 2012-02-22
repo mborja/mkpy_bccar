@@ -1,4 +1,4 @@
-ï»¿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="vistaReingreso.aspx.cs" Inherits="HistorialCrediticio_vistaReingreso" Title="Reingresos" %>
+<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="vistaReingreso.aspx.cs" Inherits="HistorialCrediticio_vistaReingreso" Title="Reingresos" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <link rel="stylesheet" href="../includes/themes/base/jquery.ui.all.css" >
@@ -21,7 +21,12 @@
         }
         $(function() {
             $.datepicker.setDefaults($.datepicker.regional["es"]);
-            $("#ctl00_ContentPlaceHolder1_txtFechaReingreso").datepicker({
+            $("#ctl00_ContentPlaceHolder1_txtFechaReingresoIni").datepicker({
+                showOn: "button",
+                buttonImage: "../img/calendar.gif",
+                buttonImageOnly: true
+            });
+            $("#ctl00_ContentPlaceHolder1_txtFechaReingresoFin").datepicker({
                 showOn: "button",
                 buttonImage: "../img/calendar.gif",
                 buttonImageOnly: true
@@ -54,20 +59,20 @@
                 <td colspan="6">
                     <asp:Label ID="Label1" runat="server" 
                 CssClass="labelTitulo"
-                Text="BÃºsqueda Reingreso"></asp:Label>
+                Text="Búsqueda Reingreso"></asp:Label>
                 </td>
             </tr>
             <tr>
                 <td align="left">
                             <asp:Label ID="lblRegion" 
-                                runat="server" Text="RegiÃ³n :" CssClass="labelEs"></asp:Label>  
+                                runat="server" Text="Región GZ :" CssClass="labelEs"></asp:Label>  
                         </td>
                 <td align="left">
                     <asp:TextBox ID="txtRegion" onkeypress="return onlyNumbers();" runat="server" 
                         MaxLength="2"></asp:TextBox>
                 </td>
                 <td align="left">
-                            <asp:Label ID="lblZona" runat="server" Text="Zona :" CssClass="labelEs"></asp:Label> 
+                            <asp:Label ID="lblZona" runat="server" Text="Zona GZ:" CssClass="labelEs"></asp:Label> 
                                 </td>
                 <td align="left">
                     <asp:TextBox ID="txtZona" runat="server" onkeypress="return onlyNumbers();" 
@@ -81,20 +86,21 @@
             <tr>
                 <td align="left">
                             <asp:Label ID="lblFechReingreso" runat="server" CssClass="labelEs" 
-                                Text="Fecha reingreso:"></asp:Label>
+                                Text="Fecha Inicio reingreso:"></asp:Label>
                         </td>
                 <td align="left">
-                    <asp:TextBox ID="txtFechaReingreso" runat="server" Width="80px" EnableViewState="true"></asp:TextBox>
+                    <asp:TextBox ID="txtFechaReingresoIni" runat="server" Width="80px" 
+                        EnableViewState="true"></asp:TextBox>
                 </td>
                 <td align="left">
                             <asp:Label ID="lblCampInscripcion" 
-                                runat="server" Text="CampaÃ±a de InscripciÃ³n :" CssClass="labelEs"></asp:Label>  
+                                runat="server" Text="Campaña de Inscripción :" CssClass="labelEs"></asp:Label>  
                                 </td>
                 <td align="left">
                     <asp:TextBox ID="txtCampanhaInscripcion" onkeypress="return onlyNumbers();" runat="server"></asp:TextBox>
                 </td>
                 <td align="left">
-                            <asp:Label ID="lblCampPriCompra" runat="server" Text="CampaÃ±a 1era compra :" 
+                            <asp:Label ID="lblCampPriCompra" runat="server" Text="Campaña 1era compra :" 
                                 CssClass="labelEs"></asp:Label> 
                                 </td>
                 <td align="left">
@@ -103,56 +109,18 @@
             </tr>
             <tr>
                 <td align="left">
-                            <asp:Label ID="lblDocIdentidad" 
-                                runat="server" Text="Documento de identidad:" CssClass="labelEs"></asp:Label> 
+                            <asp:Label ID="lblFechReingreso0" runat="server" CssClass="labelEs" 
+                                Text="Fecha Fin reingreso:"></asp:Label>
                 </td>
                 <td align="left">
                     <!--<asp:Label ID="lblPaisDocumentoTipo" runat="server" CssClass="labelEs" 
                         Font-Bold="True"></asp:Label>//-->
-                    <asp:TextBox ID="txtDocumentoIdentidad" runat="server" onkeypress="return onlyNumbers();"></asp:TextBox>
+                    <asp:TextBox ID="txtFechaReingresoFin" runat="server" Width="80px" 
+                        EnableViewState="true"></asp:TextBox>
                 </td>
                 <td align="left">
-                            <asp:Label ID="lblCodConsultora" runat="server" Text="CÃ³digo de Consultora:" 
-                                CssClass="labelEs"></asp:Label> 
-                                </td>
+                            &nbsp;</td>
                 <td align="left">
-                    <asp:TextBox ID="txtConsultoraCodigo" onkeypress="return onlyNumbers();" runat="server"></asp:TextBox>
-                </td>
-                <td>
-                    &nbsp;</td>
-                <td>
-                    &nbsp;</td>
-            </tr>
-            <tr>
-                <td align="left">
-                            <asp:Label ID="lblApePaterno" runat="server" Text="Apellido Paterno :" 
-                                CssClass="labelEs"></asp:Label> 
-                </td>
-                <td align="left">
-                    <asp:TextBox ID="txtApellidoPaterno" runat="server"></asp:TextBox>
-                </td>
-                <td align="left">
-                            <asp:Label ID="lblApeMaterno" runat="server" Text="Apellido Materno :" 
-                                CssClass="labelEs"></asp:Label>  
-                                </td>
-                <td align="left">
-                    <asp:TextBox ID="txtApellidoMaterno" runat="server"></asp:TextBox>
-                </td>
-                <td align="left">
-                            <asp:Label ID="lblNombres" runat="server" Text="Nombres :" CssClass="labelEs"></asp:Label>  
-                        </td>
-                <td align="left">
-                    <asp:TextBox ID="txtNombres" runat="server"></asp:TextBox>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    &nbsp;</td>
-                <td>
-                    &nbsp;</td>
-                <td>
-                    &nbsp;</td>
-                <td>
                     &nbsp;</td>
                 <td align="left">
                             <asp:Label ID="lblEstado" 
@@ -164,6 +132,48 @@
                         <asp:ListItem Value="1">Verificado</asp:ListItem>
                         <asp:ListItem Value="0">No Verificado</asp:ListItem>
                     </asp:DropDownList>
+                </td>
+            </tr>
+            <tr>
+                <td align="left">
+                            <asp:Label ID="lblDocIdentidad" 
+                                runat="server" Text="Documento de identidad:" CssClass="labelEs"></asp:Label> 
+                </td>
+                <td align="left">
+                    <asp:TextBox ID="txtDocumentoIdentidad" runat="server" onkeypress="return onlyNumbers();"></asp:TextBox>
+                </td>
+                <td align="left">
+                            <asp:Label ID="lblCodConsultora" runat="server" Text="Código de Consultora:" 
+                                CssClass="labelEs"></asp:Label> 
+                                </td>
+                <td align="left">
+                    <asp:TextBox ID="txtConsultoraCodigo" onkeypress="return onlyNumbers();" runat="server"></asp:TextBox>
+                </td>
+                <td align="left">
+                            &nbsp;</td>
+                <td align="left">
+                    &nbsp;</td>
+            </tr>
+            <tr>
+                <td align="left">
+                            <asp:Label ID="lblApePaterno" runat="server" Text="Apellido Paterno :" 
+                                CssClass="labelEs"></asp:Label> 
+                </td>
+                <td>
+                    <asp:TextBox ID="txtApellidoPaterno" runat="server"></asp:TextBox>
+                </td>
+                <td>
+                            <asp:Label ID="lblApeMaterno" runat="server" Text="Apellido Materno :" 
+                                CssClass="labelEs"></asp:Label>  
+                                </td>
+                <td>
+                    <asp:TextBox ID="txtApellidoMaterno" runat="server"></asp:TextBox>
+                </td>
+                <td align="left">
+                            <asp:Label ID="lblNombres" runat="server" Text="Nombres :" CssClass="labelEs"></asp:Label>  
+                </td>
+                <td align="left">
+                    <asp:TextBox ID="txtNombres" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -200,21 +210,21 @@
             
             <Columns>
                 <asp:BoundField DataField="reingresoID" HeaderText="reingresoID" />
-                <asp:BoundField DataField="regionCodigo" HeaderText="RegiÃ³n" >
+                <asp:BoundField DataField="regionCodigo" HeaderText="Región GZ" >
                     <HeaderStyle HorizontalAlign="Left" />
                 </asp:BoundField>
-                <asp:BoundField DataField="zonaCodigo" HeaderText="Zona" >
+                <asp:BoundField DataField="zonaCodigo" HeaderText="Zona GZ" >
                     <HeaderStyle HorizontalAlign="Left" />
                 </asp:BoundField>
-                <asp:BoundField DataField="Fecha" HeaderText="Fecha de Reingreso" >
+                <asp:BoundField DataField="Fecha" HeaderText="Fecha Solicitud de Reingreso" >
                     <HeaderStyle HorizontalAlign="Left" />
                 </asp:BoundField>
                 <asp:BoundField DataField="campanhaInscripcion" 
-                    HeaderText="CampaÃ±a de InscripciÃ³n" >
+                    HeaderText="Campaña de Inscripción" >
                     <HeaderStyle HorizontalAlign="Left" />
                 </asp:BoundField>
                 <asp:BoundField DataField="campanhaPrimeraCompra" 
-                    HeaderText="CampaÃ±a 1era Compra" >
+                    HeaderText="Campaña 1era Compra" >
                     <HeaderStyle HorizontalAlign="Left" />
                 </asp:BoundField>
                 <asp:BoundField DataField="documentoNumero" HeaderText="Documento de identidad" >
