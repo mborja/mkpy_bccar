@@ -144,6 +144,9 @@ public class Reingresos extends GPSScreen implements FieldChangeListener, FocusC
     }
 	
 	private void grabar() {
+		
+		int longapepat,longapemat,longnombre = 0;
+		
 		if ( txtCodConsultora.getText().getText().length() == 0 && txtNroDoc.getText().getText().length() == 0  ) {
 			Dialog.inform("Debe ingresar un código de consultora o número de documento");
 			return;			
@@ -151,10 +154,6 @@ public class Reingresos extends GPSScreen implements FieldChangeListener, FocusC
 		
 		if ( txtCodConsultora.getText().getText().length() > 0 ) {
 			if ( txtCodConsultora.getText().getText().length() < txtCodConsultora.getText().getMaxSize() ) {
-//				int dif = txtCodConsultora.getText().getMaxSize() - txtCodConsultora.getText().getText().length();
-//				for(int i = 0; i < dif; i++) {
-//					txtCodConsultora.getText().setText("0" + txtCodConsultora.getText().getText());
-//				}
 				txtCodConsultora.setFocus();
 				Dialog.inform("Faltan dígitos en el Código de Consultora.");
 				return;
@@ -163,36 +162,54 @@ public class Reingresos extends GPSScreen implements FieldChangeListener, FocusC
 
 		if ( txtNroDoc.getText().getText().length() > 0 ) {
 			if ( txtNroDoc.getText().getText().length() < txtNroDoc.getText().getMaxSize() ) {
-//				int dif = txtNroDoc.getText().getMaxSize() - txtNroDoc.getText().getText().length();
-//				for(int i = 0; i < dif; i++) {
-//					txtNroDoc.getText().setText("0" + txtNroDoc.getText().getText());
-//				}
 				txtNroDoc.setFocus();
 				Dialog.inform("Faltan dígitos en el documento");
 				return;
 			}
 		}
 		
-		if ( txtAppaterno.getText().getText().length() == 0 ) {
+		longapepat=txtAppaterno.getText().getText().length();
+		if (longapepat  == 0 ) {
 			txtAppaterno.setFocus();
 			Dialog.inform("Debe ingresar apellido paterno");
 			return;
-		}
-		if(txtAppaterno.haveNumbers()){
+		}else if(longapepat<2){
+			txtAppaterno.setFocus();
+			Dialog.inform("Debe haber al menos 2 caracteres en apellido paterno");
+			return;
+		}else if(txtAppaterno.haveNumbers()){
 			txtAppaterno.setFocus();
 			Dialog.inform("Existen números en el apellido paterno");
 			return;
 		}
-			
-			
-		if ( txtNombres.getText().getText().length() == 0 ) {
+		
+		longapemat=txtApmaterno.getText().getText().length();
+		if (longapemat  == 0 ) {
+			txtApmaterno.setFocus();
+			Dialog.inform("Debe ingresar apellido materno");
+			return;
+		}else if(longapemat<2){
+			txtApmaterno.setFocus();
+			Dialog.inform("Debe haber al menos 2 caracteres en apellido materno");
+			return;
+		}else if(txtApmaterno.haveNumbers()){
+			txtApmaterno.setFocus();
+			Dialog.inform("Existen números en el apellido materno");
+			return;
+		}
+		
+		longnombre = txtNombres.getText().getText().length();
+		if ( longnombre == 0 ) {
 			txtNombres.setFocus();
 			Dialog.inform("Debe ingresar nombres");
 			return;
-		}
-		if(txtNombres.haveNumbers()){
+		}else if(longnombre<2){
 			txtNombres.setFocus();
-			Dialog.inform("Existen números en el apellido paterno");
+			Dialog.inform("Debe haber al menos 2 caracateres en los nombres");
+			return;
+		}else if(txtNombres.haveNumbers()){
+			txtNombres.setFocus();
+			Dialog.inform("Existen números en los nombres");
 			return;
 		}
 		

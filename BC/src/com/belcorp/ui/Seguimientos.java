@@ -47,7 +47,7 @@ public class Seguimientos extends GPSScreen implements FieldChangeListener, Focu
 	private String gpsLat = "";
 
     private mkpyLabelEditField txtCodConsultora = new mkpyLabelEditField("Cod.Consultora:", "", 7, EditField.FIELD_LEFT | EditField.NO_NEWLINE | EditField.FILTER_NUMERIC, Color.BLACK, Color.WHITE);
-	private DateField txtFecha = new DateField("Fecha:", (new Date()).getTime(), DateField.DATE | DateField.USE_ALL_WIDTH);
+	private DateField txtFecha = new DateField("Fecha:", (new Date()).getTime(), DateField.DATE | DateField.USE_ALL_WIDTH | DateField.NON_FOCUSABLE );
 	private mkpyLabelEditField txtObservacion = new mkpyLabelEditField("Observación:", "", 50, EditField.FIELD_LEFT | EditField.FILTER_DEFAULT, Color.BLACK, Color.WHITE);
 	private mkpyLabelLabelField lblTipoDoc; // = new mkpyLabelChoiceField("Tipo doc:", aTipoDoc, 0, ObjectChoiceField.USE_ALL_WIDTH, Color.BLACK, Color.WHITE);
 	private mkpyLabelEditField txtNroDoc; // = new mkpyLabelEditField("Nro doc:", "", 15, EditField.FIELD_LEFT | EditField.NO_NEWLINE | EditField.FILTER_NUMERIC, Color.BLACK, Color.WHITE);

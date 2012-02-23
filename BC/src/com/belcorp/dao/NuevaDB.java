@@ -418,7 +418,7 @@ public class NuevaDB {
     			}
     		}
     		if( nroDoc.length() > 0 ) {
-    			if ( item.getNroDocumento().equals(nroDoc) ) {
+    			if ( item.getNroDocumento().indexOf(nroDoc)>=0 ) {
     				result = result && true;
     			} else {
     				result = result && false;
