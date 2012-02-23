@@ -409,8 +409,9 @@ public class NuevaDB {
     				result = false;
     			}
     		}
+    		//TODO: buscar territorio por parte del texto
     		if( territorio.length() > 0 ) {
-    			if ( item.getTerritorio().equals(territorio) ) {
+    			if ( item.getTerritorio().toUpperCase().indexOf(territorio.toUpperCase())>=0 ) {
     				result = result && true;
     			} else {
     				result = result && false;

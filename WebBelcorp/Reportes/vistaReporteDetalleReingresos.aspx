@@ -84,7 +84,7 @@
             </tr>
             <tr>
                 <td align="left">
-                            <asp:Label ID="lblFechInscripcion"  runat="server" Text="Fecha Inicial de reingreso:" 
+                            <asp:Label ID="lblFechInscripcion"  runat="server" Text="Fecha de reingreso desde:" 
                                 CssClass="labelEs"></asp:Label> 
                         </td>
                 <td align="left">
@@ -105,7 +105,7 @@
             </tr>
             <tr>
                 <td align="left">
-                            <asp:Label ID="lblFechInscripcion0"  runat="server" Text="Fecha Final de reingreso:" 
+                            <asp:Label ID="lblFechInscripcion0"  runat="server" Text="Fecha de reingreso desde:" 
                                 CssClass="labelEs"></asp:Label> 
                 </td>
                 <td align="left">

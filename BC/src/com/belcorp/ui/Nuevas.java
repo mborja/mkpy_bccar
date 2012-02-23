@@ -170,6 +170,9 @@ public class Nuevas extends GPSScreen implements FieldChangeListener, FocusChang
 	private mkpyLabelEditField txtObsRec = new mkpyLabelEditField("Observacion:", "", 20, EditField.FIELD_LEFT | EditField.NO_NEWLINE | EditField.FILTER_DEFAULT, Color.BLACK, Color.WHITE);
 	// FIN: Record
 	
+	private String docOculto="";
+	private boolean isEdicion=false;
+	
 	public boolean onClose() {
     	if(Dialog.ask(Dialog.D_YES_NO, "¿Desea grabar en borrador antes de salir?") != Dialog.NO){
     		grabarDraft();
@@ -180,6 +183,7 @@ public class Nuevas extends GPSScreen implements FieldChangeListener, FocusChang
     };
 	
 	public Nuevas(Nueva sc) {
+		if(sc!=null) isEdicion=true;
 		nuevaSC = sc;
 		int index;
 		usuario = usuarios.getUsuario();
@@ -236,9 +240,7 @@ public class Nuevas extends GPSScreen implements FieldChangeListener, FocusChang
 			else index++;
 		}
 		cboOtrasMarcas = new mkpyLabelChoiceField("Vendes otras marcas?:", aVendeOtras, index, ObjectChoiceField.FIELD_RIGHT, Color.BLACK, Color.WHITE);
-
 		aTipoVincFam = Cadenas.getDescriptions(tipoVinculos.getObjetosFamiliar());
-
 		aTipoVincNoFam = Cadenas.getDescriptions(tipoVinculos.getObjetosNoFamiliar());
 
 		if ( sc == null ) {
@@ -310,8 +312,12 @@ public class Nuevas extends GPSScreen implements FieldChangeListener, FocusChang
         	txtNroDoc = new mkpyLabelEditField("Nro doc.identidad:", "", 11, EditField.FIELD_LEFT | EditField.NO_NEWLINE | EditField.FILTER_NUMERIC, Color.BLACK, Color.WHITE);
         }
         add(txtNroDoc);
+        docOculto=sc.getNroDocumento();
 		if ( sc != null ) {
-			txtNroDoc.getText().setText(sc.getNroDocumento());
+			if(usuario.getIdPais()=="7")
+				txtNroDoc.getText().setText(sc.getNrodocProt());
+			else
+				txtNroDoc.getText().setText(sc.getNroDocumento());
 		}
         txtNroDoc.setChangeListener(this);
         txtNroDoc.setFocusListener(this);
@@ -963,7 +969,11 @@ public class Nuevas extends GPSScreen implements FieldChangeListener, FocusChang
         nueva.setApMaterno(txtApmaterno.getText().getText());
         nueva.setNombres(txtNombres.getText().getText());
         nueva.setFechaNacimiento(sdf.formatLocal(txtFechaNac.getDate()));
-        nueva.setNroDocumento(txtNroDoc.getText().getText());
+        //TODO:Número de documento oculto dependiendo si es edición o nuevo
+        if(isEdicion)
+	        nueva.setNroDocumento(docOculto);
+        else
+        	nueva.setNroDocumento(txtNroDoc.getText().getText());
 
         if ( cboEstadoCivil.getSelectedIndex() == 0 ) {
             nueva.setEstadoCivil("");
@@ -1427,7 +1437,11 @@ public class Nuevas extends GPSScreen implements FieldChangeListener, FocusChang
         nueva.setApMaterno(txtApmaterno.getText().getText());
         nueva.setNombres(txtNombres.getText().getText());
         nueva.setFechaNacimiento(sdf.formatLocal(txtFechaNac.getDate()));
-        nueva.setNroDocumento(txtNroDoc.getText().getText());
+        //TODO:Número de documento oculto dependiendo si es edicion o nuevo
+        if(isEdicion)
+        	nueva.setNroDocumento(docOculto);
+        else
+        	nueva.setNroDocumento(txtNroDoc.getText().getText());
 
         if ( cboEstadoCivil.getSelectedIndex() == 0 ) {
             nueva.setEstadoCivil("");

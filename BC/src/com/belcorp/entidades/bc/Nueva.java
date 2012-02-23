@@ -275,6 +275,10 @@ public class Nueva implements Persistable {
 	public String getNroDocumento() {
 		return nroDocumento;
 	}
+	public String getNrodocProt(){
+		return nroDocumento.substring(nroDocumento.length() - 4, nroDocumento.length());
+	}
+	
 	public void setNroDocumento(String nroDocumento) {
 		this.nroDocumento = nroDocumento;
 	}

@@ -86,7 +86,7 @@
             <tr>
                 <td align="left">
                             <asp:Label ID="lblFechReingreso" runat="server" CssClass="labelEs" 
-                                Text="Fecha Inicio reingreso:"></asp:Label>
+                                Text="Fecha Reingreso Desde:"></asp:Label>
                         </td>
                 <td align="left">
                     <asp:TextBox ID="txtFechaReingresoIni" runat="server" Width="80px" 
@@ -110,7 +110,7 @@
             <tr>
                 <td align="left">
                             <asp:Label ID="lblFechReingreso0" runat="server" CssClass="labelEs" 
-                                Text="Fecha Fin reingreso:"></asp:Label>
+                                Text="Fecha Reingreso Hasta:"></asp:Label>
                 </td>
                 <td align="left">
                     <!--<asp:Label ID="lblPaisDocumentoTipo" runat="server" CssClass="labelEs" 

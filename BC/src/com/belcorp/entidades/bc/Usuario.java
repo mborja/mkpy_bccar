@@ -161,6 +161,11 @@ public final class Usuario implements Persistable {
 	public String getNrodoc() {
 		return nrodoc;
 	}
+	
+	public String getNroDocProt(){
+		return nrodoc.substring(nrodoc.length() - 4, nrodoc.length());
+	}
+	
 	public void setNrodoc(String nrodoc) {
 		this.nrodoc = nrodoc;
 	}

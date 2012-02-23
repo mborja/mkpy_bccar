@@ -80,7 +80,7 @@
             </tr>
             <tr>
                 <td align=left style="width: 217px">
-                            <asp:Label ID="lblFechIniInscripcion" runat="server" Text="Fecha de inicio de incorporación:" 
+                            <asp:Label ID="lblFechIniInscripcion" runat="server" Text="Fecha de incorporación desde:" 
                                 CssClass="labelEs"></asp:Label> 
                         </td>
                 <td align=left colspan="2" style="width: auto">
@@ -97,7 +97,7 @@
             </tr>
             <tr>
                 <td align="left" style="width: 217px">
-                            <asp:Label ID="lblFechFinInscripcion" runat="server" Text="Fecha de fin de incorporación:" 
+                            <asp:Label ID="lblFechFinInscripcion" runat="server" Text="Fecha  de incorporación hasta:" 
                                 CssClass="labelEs"></asp:Label> 
                 </td>
                 <td colspan="2" align="left">
