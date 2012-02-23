@@ -312,8 +312,9 @@ public class Nuevas extends GPSScreen implements FieldChangeListener, FocusChang
         	txtNroDoc = new mkpyLabelEditField("Nro doc.identidad:", "", 11, EditField.FIELD_LEFT | EditField.NO_NEWLINE | EditField.FILTER_NUMERIC, Color.BLACK, Color.WHITE);
         }
         add(txtNroDoc);
-        docOculto=sc.getNroDocumento();
+        
 		if ( sc != null ) {
+			docOculto=sc.getNroDocumento();
 			if(usuario.getIdPais()=="7")
 				txtNroDoc.getText().setText(sc.getNrodocProt());
 			else
