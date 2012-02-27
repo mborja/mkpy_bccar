@@ -31,6 +31,7 @@ import com.belcorp.entidades.bc.Usuario;
 import com.belcorp.utilidades.Cadenas;
 import com.belcorp.utilidades.Fechas;
 import com.belcorp.utilidades.Sistema;
+import com.belcorp.utilidades.Error;
 import com.makipuray.ui.mkpyLabelEditField;
 
 public class NuevaDB {
@@ -40,9 +41,8 @@ public class NuevaDB {
     private static final long IDSTORE = 0xc9f40a5522e93dcdL; // com.belcorp.entidades.nuevas
     private Vector objetos;
     private Usuario usuario;
-    private String msgerror="";
-    private String coderror="";
     private String response="";
+    private Error error;
     
     public NuevaDB() {
     	UsuarioDB usuarios = new UsuarioDB();
@@ -312,18 +312,19 @@ public class NuevaDB {
     }
 
     private boolean decodeResponse(NodeList node) {
-    	boolean ok=false;
         Node contactNode = node.item(1);
         String registro = contactNode.getChildNodes().item(0).getNodeValue();
         String[] fields = Cadenas.splitSimple(registro, Cadenas.TOKEN);
         if ( fields.length > 0 ) {
-    		this.setCoderror(fields[1]);
-    		this.setMsgerror(fields[2]);
         	if ( fields[0].trim().equals("1") ) {
-        		ok=true;
+        		return true;
+        	} else {
+        		error = new Error();
+        		error.setIdError(Integer.parseInt(fields[1]));
+        		error.setMensaje(fields[2]);
         	}
         }
-        return ok;
+        return false;
     }
     
     public boolean putRemote(Nueva nueva) {
@@ -353,19 +354,19 @@ public class NuevaDB {
                 is.close();
                 is = null;
             } else {
-            	response = "HTTP " + httpResponse; 
                 resultado = false;
             }
             httpConn.close();
             httpConn = null;
         } catch(Exception ex) {
-        	response = "" + ex.getMessage(); 
+            resultado = false;
+        } finally {
             try { is.close(); } catch(Exception e) { }
             is = null;
             try { httpConn.close(); } catch(Exception e) { }
             httpConn = null;
-            resultado = false;
-        } finally {
+        	is=null;
+        	httpConn=null;
         }
         return resultado;
     }
@@ -459,20 +460,14 @@ public class NuevaDB {
     	return resultado;
     }
 
-	public String getMsgerror() {
-		return msgerror;
+	public Error getError() {
+		return error;
 	}
 
-	public void setMsgerror(String msgerror) {
-		this.msgerror = msgerror;
+	public void setError(Error error) {
+		this.error = error;
 	}
 
-	public String getCoderror() {
-		return coderror;
-	}
-
-	public void setCoderror(String coderror) {
-		this.coderror = coderror;
-	}
+	
     
 }

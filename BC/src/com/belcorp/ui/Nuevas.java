@@ -28,6 +28,7 @@ import com.belcorp.utilidades.Cadenas;
 import com.belcorp.utilidades.Estilos;
 import com.belcorp.utilidades.Fechas;
 import com.belcorp.utilidades.Sistema;
+import com.belcorp.utilidades.Error;
 import com.makipuray.ui.mkpyDialogInput;
 import com.makipuray.ui.mkpyLabelChoiceField;
 import com.makipuray.ui.mkpyLabelEditField;
@@ -312,7 +313,6 @@ public class Nuevas extends GPSScreen implements FieldChangeListener, FocusChang
         	txtNroDoc = new mkpyLabelEditField("Nro doc.identidad:", "", 11, EditField.FIELD_LEFT | EditField.NO_NEWLINE | EditField.FILTER_NUMERIC, Color.BLACK, Color.WHITE);
         }
         add(txtNroDoc);
-        
 		if ( sc != null ) {
 			docOculto=sc.getNroDocumento();
 			if(usuario.getIdPais()=="7")
@@ -326,7 +326,6 @@ public class Nuevas extends GPSScreen implements FieldChangeListener, FocusChang
         add(cboEstadoCivil);
         add(cboNivelEducativo);
         add(cboOtrasMarcas);
-
         add(lblDatosContacto);
         add(txtTelefonoCasa);
 		if ( sc != null ) {
@@ -1077,28 +1076,25 @@ public class Nuevas extends GPSScreen implements FieldChangeListener, FocusChang
             record.setSatelites("0");
     	}
         nueva.setRecord(record);
-        
         nuevas.saveObject(nueva, nuevaSC);
         progress.setTitle("Enviando...");
         
         if ( nuevas.putRemote(nueva) ) {
+        	progress.close();
             nueva.setEnviado("1");
-            nueva.setHasError(false);
         	Dialog.inform("La incorporación se envío con éxito");
+        	nuevas.commitChanges();
+            nuevas = null;
+    		close();
         } else {
         	progress.close();
-            nueva.setHasError(true);
-            if ( nueva.getModo().equals("2") ) {
-            	nueva.setModo("1");
-            	Dialog.inform("Se produjo un error al enviar la incorporación, se guardará como Borrador. ".concat(nuevas.getCoderror()).concat(" ").concat(nuevas.getMsgerror()) );
-            } else {
-            	Dialog.inform("Se produjo un error al enviar la incorporación, ".concat(nuevas.getCoderror()).concat(" ").concat(nuevas.getMsgerror()));
-            }
+        	nueva.setModo("1");
+        	nuevas.commitChanges();
+        	Error error = nuevas.getError();
+        	Dialog.inform("Se produjo un error al enviar la incorporación, se guardará como Borrador. ".concat(error.getMensaje()));
+            manejoErrores(error);
         }
-        nuevas.commitChanges();
-        progress.close();
-        nuevas = null;
-		close();
+        
     }
 
     private void grabarReal() {
@@ -1552,45 +1548,55 @@ public class Nuevas extends GPSScreen implements FieldChangeListener, FocusChang
         progress.setTitle("Enviando...");
         
         if ( nuevas.putRemote(nueva) ) {
+        	progress.close();
             nueva.setEnviado("1");
-            nueva.setHasError(false);
-        	Dialog.inform("La incorporacion se envío con éxito");
+        	Dialog.inform("La incorporación se envío con éxito");
+        	nuevas.commitChanges();
+            nuevas = null;
+    		close();
         } else {
         	progress.close();
-            nueva.setHasError(true);
-            if ( nueva.getModo().equals("2") ) {
-            	nueva.setModo("1");
-            	Dialog.inform("Se produjo un error al enviar la incorporacion, se guardará como Borrador. " + nuevas.getResponse());
-            } else {
-            	Dialog.inform("Se produjo un error al enviar la incorporacion, " + nuevas.getResponse());
-            }
+        	nueva.setModo("1");
+        	nuevas.commitChanges();
+        	Error error = nuevas.getError();
+        	Dialog.inform("Se produjo un error al enviar la incorporación, se guardará como Borrador. ".concat(error.getMensaje()));
+            manejoErrores(error);
         }
-        nuevas.commitChanges();
-        
-        progress.close();
-        nuevas = null;
-		close();
+
     }
 
     protected boolean onSavePrompt() {
     	boolean result = true;
-        if ( nuevaSC != null ) {
-            if ( nuevaSC.getModo().equals("1") ) { // MODO DRAFT
-            	if ( Dialog.ask(Dialog.D_YES_NO, "Descartar los cambios?") == Dialog.YES ) 
-            		result = true;
-        		else
-        			result = false;
-            }
-        } else {
-        	if ( Dialog.ask(Dialog.D_YES_NO, "Descartar los cambios?") == Dialog.YES ) 
-        		result = true;
-    		else
-    			result = false;
-        }
+    	if ( Dialog.ask(Dialog.D_YES_NO, "Descartar los cambios?") == Dialog.YES ) 
+    		result = true;
+		else
+			result = false; 
     	return result;
     } 
     
 	public void focusChanged(Field field, int eventType) {
         lblEstado.setText("");
 	}
+	
+	private void manejoErrores(Error error){
+		int idError = error.getIdError();
+		switch (idError){
+		case 1: 
+			txtNroDoc.setFocus();
+			break;
+		case 2: 
+			txtNroDoc.setFocus();
+			break;
+		case 20:
+			txtCodConsRec.setFocus();
+			break;
+		case 21:
+			txtCodConsRec.setFocus();
+			break;
+		default:
+			txtNroDoc.setFocus();
+			break;
+		}
+	}
+	
 }

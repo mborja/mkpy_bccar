@@ -25,6 +25,7 @@ import com.belcorp.entidades.bc.Seguimiento;
 import com.belcorp.entidades.bc.Usuario;
 import com.belcorp.utilidades.Cadenas;
 import com.belcorp.utilidades.Sistema;
+import com.belcorp.utilidades.Error;
 
 public class ReingresoDB {
     private static final String metodoWeb = "RegistroReingreso"; //BBWS7ObtenerMeta?PIN=&IMEI=&IMSI=&IDAPP=&FFVV=FS&CodigoPais=21&NombreUsuario=1215&GMT=&Rol=
@@ -33,8 +34,7 @@ public class ReingresoDB {
     private static final long IDSTORE = 0x3cb4aa65f8155dc2L; // com.belcorp.entidades.reingreso
     private Vector objetos;
     private Usuario usuario;
-    
-    private String response = "";
+    private Error error;
 
     public ReingresoDB() {
     	UsuarioDB usuarios = new UsuarioDB();
@@ -56,11 +56,7 @@ public class ReingresoDB {
         } catch (Exception e) {
         }
     }
-    
-    public String getResponse() {
-    	return response;
-    }
-    
+      
     public void commitChanges() {
     	persist.commit();
     }
@@ -166,10 +162,11 @@ public class ReingresoDB {
         String[] fields = Cadenas.splitSimple(registro, Cadenas.TOKEN);
         if ( fields.length > 0 ) {
         	if ( fields[0].trim().equals("1") ) {
-        		response = "";
         		return true;
         	} else {
-        		response = fields[1];
+        		error = new Error();
+        		error.setIdError(Integer.parseInt(fields[1]));
+        		error.setMensaje(fields[2]);
         	}
         }
         return false;
@@ -220,4 +217,12 @@ public class ReingresoDB {
         return objetos;
     }
 
+	public Error getError() {
+		return error;
+	}
+
+	public void setError(Error error) {
+		this.error = error;
+	}
+    
 }

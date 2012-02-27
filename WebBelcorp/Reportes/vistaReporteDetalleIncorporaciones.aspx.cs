@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Configuration;
 using System.Data;
+using System.Globalization;
 
 using System.Web;
 using System.Web.Security;
@@ -179,12 +180,32 @@ public partial class HistorialCrediticio_vistaIncorporaciones : System.Web.UI.Pa
         String regionCodigo = lblRegionCodigo.Text;
         String zonaCodigo = lblZonaCodigo.Text;
         String fechaInscripcion = txtFechaInscripcionIni.Text;
+        String fechaInscripcionIni = txtFechaInscripcionIni.Text;
+        String fechaInscripcionFin = txtFechaInscripcionFin.Text;
         String campanhaInscripcion = txtCampaniaInscripcion.Text;
         String documentoNumero = txtDocumentoIdentidad.Text;
         String consultoraCodigo = txtCodigoConsultora.Text;
         String apellidoPaterno = txtApellidoPaterno.Text;
         String apellidoMaterno = txtApellidoMaterno.Text;
         String nombres = txtNombres.Text;
+
+        DateTime dtProjectStartDate = new DateTime();
+        DateTime dtFecRegIni = new DateTime();
+        DateTime dtFecRegFin = new DateTime();
+        CultureInfo culture = new CultureInfo("en-GB");
+        if (fechaInscripcion.Length > 0)
+        {
+            try
+            {
+                dtProjectStartDate = Convert.ToDateTime(fechaInscripcion, culture);
+                dtFecRegIni = Convert.ToDateTime(fechaInscripcionIni, culture);
+                dtFecRegFin = Convert.ToDateTime(fechaInscripcionFin, culture);
+            }
+            catch (Exception ex)
+            {
+                dtProjectStartDate = DateTime.Now;
+            }
+        }
 
         int intEstadoVerificado = Convert.ToInt32(ddlEstadoVerificado.SelectedValue);
         int intModoGrabacion = Convert.ToInt32(ddlModoGrabacion.SelectedValue);
@@ -201,7 +222,9 @@ public partial class HistorialCrediticio_vistaIncorporaciones : System.Web.UI.Pa
             rpt.SetDatabaseLogon("", "", ".", db_databaseName);
             rpt.SetParameterValue("@regionCodigo", regionCodigo);
             rpt.SetParameterValue("@zonaCodigo", zonaCodigo);
-            rpt.SetParameterValue("@fechaInscripcion", Convert.DBNull); // < por ahora null
+            rpt.SetParameterValue("@fechaInscripcion", dtProjectStartDate.ToShortDateString() ); // < por ahora null
+            rpt.SetParameterValue("@fecRegIni", dtFecRegIni.ToShortDateString());
+            rpt.SetParameterValue("@fecRegFin", dtFecRegFin.ToShortDateString());
             rpt.SetParameterValue("@campanhaInscripcion", campanhaInscripcion);
             rpt.SetParameterValue("@numeroDocumento", documentoNumero);
             rpt.SetParameterValue("@consultoraCodigo", consultoraCodigo);

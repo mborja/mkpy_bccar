@@ -15,7 +15,7 @@ public final class Cadenas {
     public static final String APTA = "1";
 	private static String[] opciones = {"Incorporaciones SC", " Nuevas SC", " Mantenimiento SC", 
 			"Gestión de consultoras", " Seguimientos", " Reingresos", 
-			"Sincronización", " Envío y recepción"};
+			"Sincronización", " Envío al servidor"};
 
 	
 	public static String getOpcion(int index) {

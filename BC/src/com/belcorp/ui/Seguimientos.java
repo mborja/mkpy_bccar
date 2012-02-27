@@ -17,6 +17,7 @@ import com.belcorp.entidades.bc.Usuario;
 import com.belcorp.utilidades.Estilos;
 import com.belcorp.utilidades.Fechas;
 import com.belcorp.utilidades.Sistema;
+import com.belcorp.utilidades.Error;
 import com.makipuray.ui.mkpyLabelEditField;
 import com.makipuray.ui.mkpyLabelField;
 import com.makipuray.ui.mkpyLabelLabelField;
@@ -42,6 +43,7 @@ public class Seguimientos extends GPSScreen implements FieldChangeListener, Focu
 	private TipoDocDB tipodocs = new TipoDocDB();
 	private UsuarioDB usuarios = new UsuarioDB();
 	private Usuario usuario;
+	private Error error;
 	
 	private String gpsLon = "";
 	private String gpsLat = "";
@@ -131,6 +133,8 @@ public class Seguimientos extends GPSScreen implements FieldChangeListener, Focu
 
 	private void grabar() {
 		//VALIDAR
+		String mensaje="";
+		int idError=0;
 		if ( txtCodConsultora.getText().getText().length() == 0 && txtNroDoc.getText().getText().length() == 0 ) {
 			Dialog.inform("Debe ingresar un código de consultora o número de documento");
 			return;
@@ -220,19 +224,20 @@ public class Seguimientos extends GPSScreen implements FieldChangeListener, Focu
         
         seguimientos.saveObject(seguimiento);
         progress.setTitle("Enviando...");
-        
         if ( seguimientos.putRemote(seguimiento) ) {
+        	progress.close();
             seguimiento.setEnviado("1");
             seguimientos.commitChanges();
         	Dialog.inform("El seguimiento se envío con éxito");
+            seguimientos = null;
+    		close();
         } else {
-        	Dialog.inform("Se produjo un error al enviar el seguimiento, " + seguimientos.getResponse());
+        	progress.close();
+        	error = seguimientos.getError();
+        	Dialog.inform("Se produjo un error al enviar el seguimiento, " + error.getMensaje());
+        	manejoErrores(error);
         }
         
-        progress.close();
-        seguimientos = null;
-		//Dialog.inform("Se grabó con éxito");
-		close();
 	}
 	
 	public void focusChanged(Field field, int eventType) {
@@ -245,5 +250,26 @@ public class Seguimientos extends GPSScreen implements FieldChangeListener, Focu
 		else
 			return false;
     } 
+    
+    private void manejoErrores(Error error){
+		int idError = error.getIdError();
+		switch (idError){
+		case 1: 
+			txtCodConsultora.setFocus();
+			break;
+		case 2: 
+			txtCodConsultora.setFocus();
+			break;
+		case 20:
+			txtCodConsultora.setFocus();
+			break;
+		case 21:
+			txtCodConsultora.setFocus();
+			break;
+		default:
+			txtCodConsultora.setFocus();
+			break;
+		}
+	}
 
 }

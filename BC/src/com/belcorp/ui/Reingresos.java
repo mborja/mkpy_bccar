@@ -15,6 +15,8 @@ import com.belcorp.utilidades.Estilos;
 import com.belcorp.utilidades.Fechas;
 import com.belcorp.utilidades.GPSScreen;
 import com.belcorp.utilidades.Sistema;
+import com.belcorp.utilidades.Error;
+
 import com.makipuray.ui.mkpyLabelEditField;
 import com.makipuray.ui.mkpyLabelField;
 import com.makipuray.ui.mkpyLabelLabelField;
@@ -333,13 +335,17 @@ public class Reingresos extends GPSScreen implements FieldChangeListener, FocusC
         	reingreso.setEnviado("1");
             reingresos.commitChanges();
         	Dialog.inform("El reingreso se envío con éxito");
+            progress.close();
+            reingresos = null;
+            close();
         } else {
-        	Dialog.inform("Se produjo un error al enviar el reingreso, " + reingresos.getResponse());
+        	reingresos.commitChanges();
+        	progress.close();
+        	Error error = reingresos.getError();
+        	Dialog.inform("Se produjo un error al enviar el reingreso, " + error.getMensaje());
+        	manejoErrores(error);
         }
-        progress.close();
-        reingresos = null;
-		//Dialog.inform("Se grabó con éxito");
-		close();
+
 	}
 
 	public void focusChanged(Field field, int eventType) {
@@ -352,5 +358,26 @@ public class Reingresos extends GPSScreen implements FieldChangeListener, FocusC
 		else
 			return false;
     } 
+    
+    private void manejoErrores(Error error){
+		int idError = error.getIdError();
+		switch (idError){
+		case 1: 
+			txtCodConsultora.setFocus();
+			break;
+		case 2: 
+			txtCodConsultora.setFocus();
+			break;
+		case 20:
+			txtCodConsultora.setFocus();
+			break;
+		case 21:
+			txtCodConsultora.setFocus();
+			break;
+		default:
+			txtCodConsultora.setFocus();
+			break;
+		}
+	}
 	
 }

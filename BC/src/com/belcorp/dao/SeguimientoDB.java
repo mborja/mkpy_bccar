@@ -26,6 +26,7 @@ import com.belcorp.entidades.bc.Seguimiento;
 import com.belcorp.entidades.bc.Usuario;
 import com.belcorp.utilidades.Cadenas;
 import com.belcorp.utilidades.Sistema;
+import com.belcorp.utilidades.Error;
 
 public class SeguimientoDB {
     private static final String metodoWeb = "RegistroSeguimiento"; //BBWS7ObtenerMeta?PIN=&IMEI=&IMSI=&IDAPP=&FFVV=FS&CodigoPais=21&NombreUsuario=1215&GMT=&Rol=
@@ -34,8 +35,7 @@ public class SeguimientoDB {
     private static final long IDSTORE = 0x364ab0013c1e6e14L; // com.belcorp.entidades.seguimiento
     private Vector objetos;
     private Usuario usuario;
-
-    private String response = "";
+    private Error error;
     
     public SeguimientoDB() {
     	UsuarioDB usuarios = new UsuarioDB();
@@ -58,10 +58,6 @@ public class SeguimientoDB {
         }
     }    
     
-    public String getResponse() {
-    	return response;
-    }
-
     public void commitChanges() {
     	persist.commit();
     }
@@ -158,10 +154,11 @@ public class SeguimientoDB {
         String[] fields = Cadenas.splitSimple(registro, Cadenas.TOKEN);
         if ( fields.length > 0 ) {
         	if ( fields[0].trim().equals("1") ) {
-        		response = "";
         		return true;
         	} else {
-        		response = fields[1];
+        		error = new Error();
+        		error.setIdError(Integer.parseInt(fields[1]));
+        		error.setMensaje(fields[2]);
         	}
         }
         return false;
@@ -211,5 +208,13 @@ public class SeguimientoDB {
     public Vector getObjetos() {
         return objetos;
     }
+
+	public Error getError() {
+		return error;
+	}
+
+	public void setError(Error error) {
+		this.error = error;
+	}
 
 }
