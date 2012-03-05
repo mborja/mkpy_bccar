@@ -1091,7 +1091,7 @@ public class Nuevas extends GPSScreen implements FieldChangeListener, FocusChang
         	nueva.setModo("1");
         	nuevas.commitChanges();
         	Error error = nuevas.getError();
-        	Dialog.inform("Se produjo un error al enviar la incorporación, se guardará como Borrador. ".concat(error.getMensaje()));
+        	Dialog.inform("Se produjo un error al enviar la incorporación, se guardará solo en el equipo como Borrador. ".concat(error.getMensaje()));
             manejoErrores(error);
         }
         
@@ -1293,8 +1293,12 @@ public class Nuevas extends GPSScreen implements FieldChangeListener, FocusChang
 			txtRefFamNombres.setFocus();
 			Dialog.inform("Debe ingresar el nombre de la referencia familiar de la solicitante");
 			return;
+		}else if(txtRefFamNombres.getText().getText().length() < 2){
+			txtRefFamNombres.setFocus();
+			Dialog.inform("El nombre de la referencia familiar debe tener al menos 2 caracteres");
+			return;
 		}
-		if (txtRefFamNombres.haveNumbers() ) {
+		if ( txtRefFamNombres.haveNumbers() ) {
 			txtRefFamNombres.setFocus();
 			Dialog.inform("Existen números en el nombre de la referencia familiar de la solicitante");
 			return;
@@ -1336,8 +1340,11 @@ public class Nuevas extends GPSScreen implements FieldChangeListener, FocusChang
 			txtRefNoFamNombres.setFocus();
 			Dialog.inform("Debe ingresar el nombre de la referencia NO familiar de la solicitante");
 			return;
-		}
-		
+		}else if(txtRefNoFamNombres.getText().getText().length() < 2){
+			txtRefNoFamNombres.setFocus();
+			Dialog.inform("El nombre de la referencia no familiar debe tener al menos 2 caracteres");
+			return;
+		}		
 		if (txtRefNoFamNombres.haveNumbers() ) {
 			txtRefNoFamNombres.setFocus();
 			Dialog.inform("Existen números en  el nombre de la referencia NO familiar de la solicitante");

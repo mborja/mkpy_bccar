@@ -32,7 +32,8 @@ public class UsuarioDB {
     private String codigo;
 
     public UsuarioDB() {
-        //URL = Sistema.getJADProperty("urlBase") + metodoWeb; // TODO: completar con los parametros para el servicio web
+        //URL = Sistema.getJADProperty("urlBase") + metodoWeb; 
+    	// TODO: completar con los parametros para el servicio web
         persist = PersistentStore.getPersistentObject( IDSTORE ); 
         try {
             usuario = (Usuario) persist.getContents();

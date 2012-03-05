@@ -105,7 +105,7 @@
                             <asp:Label ID="lblCodConsultora" runat="server" Text="Código de consultora:" 
                                 CssClass="labelEs"></asp:Label> 
                                 </td>
-                <td>
+                <td style="text-align: left">
                     <asp:TextBox ID="txtCodigoConsultora" onkeypress="return onlyNumbers();" runat="server"></asp:TextBox>
                 </td>
             </tr>
@@ -123,30 +123,43 @@
                 <td align="left">
                     &nbsp;</td>
                 <td align="left">
-                            &nbsp;</td>
-                <td align="left">
-                    &nbsp;</td>
-            </tr>
-            <tr>
-                <td>
                             <asp:Label ID="lblApePaterno" runat="server" Text="Apellido paterno:" 
-                                CssClass="labelEs"></asp:Label> </td>
-                <td>
+                                CssClass="labelEs"></asp:Label> 
+                </td>
+                <td align="left">
                     
                     <asp:TextBox ID="txtApellidoPaterno" runat="server"></asp:TextBox>
                     
 				</td>
+            </tr>
+            <tr>
                 <td>
+                            &nbsp;</td>
+                <td>
+                    
+                    &nbsp;</td>
+                <td>
+                            &nbsp;</td>
+                <td>
+                    &nbsp;</td>
+                <td style="text-align: left">
                             <asp:Label ID="lblApeMaterno" runat="server" Text="Apellido materno:" 
                                 CssClass="labelEs"></asp:Label>  
-                                </td>
-                <td>
+                            &nbsp;
+                </td>
+                <td style="text-align: left">
                     <asp:TextBox ID="txtApellidoMaterno" runat="server"></asp:TextBox>
                 </td>
-                <td>
+            </tr>
+            <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td style="text-align: left">
                             <asp:Label ID="lblNombres" runat="server" Text="Nombres:" CssClass="labelEs"></asp:Label>  
-                        </td>
-                <td>
+                </td>
+            <td style="text-align: left">
                     <asp:TextBox ID="txtNombres" runat="server"></asp:TextBox>
                 </td>
             </tr>
