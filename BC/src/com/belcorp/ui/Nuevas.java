@@ -1186,7 +1186,7 @@ public class Nuevas extends GPSScreen implements FieldChangeListener, FocusChang
 			Dialog.inform("Debe ingresar el nombre de la solicitante");
 			return;
 		}else if(txtNombres.getText().getText().length() < 2){
-			txtAppaterno.setFocus();
+			txtNombres.setFocus();
 			Dialog.inform("El nombre de la solicitante debe tener al menos 2 caracteres");
 			return;
 		}	
@@ -1574,7 +1574,7 @@ public class Nuevas extends GPSScreen implements FieldChangeListener, FocusChang
         nueva.setNroSuperior(txtNroSuperior.getText().getText());
         nueva.setNroAdultos(txtNroAdultos.getText().getText());
     	
-        nueva.setModo("2");
+        nueva.setModo("0");
         nueva.setEnviado("0");
         nueva.setFechaRegistro(Fechas.dateToString("yyyyMMddHHmm"));
         
