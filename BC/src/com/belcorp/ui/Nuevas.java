@@ -1079,7 +1079,7 @@ public class Nuevas extends GPSScreen implements FieldChangeListener, FocusChang
         nueva.setNroSuperior(txtNroSuperior.getText().getText());
         nueva.setNroAdultos(txtNroAdultos.getText().getText());
 
-        nueva.setModo("1");
+        
         nueva.setEnviado("0");
         nueva.setFechaRegistro(Fechas.dateToString("yyyyMMddHHmm"));
         nueva.setCampana("");
@@ -1104,7 +1104,7 @@ public class Nuevas extends GPSScreen implements FieldChangeListener, FocusChang
         nueva.setRecord(record);
         nuevas.saveObject(nueva, nuevaSC);
         progress.setTitle("Enviando...");
-        
+        nueva.setModo("1");
         if ( nuevas.putRemote(nueva) ) {
         	progress.close();
             nueva.setEnviado("1");
@@ -1573,8 +1573,6 @@ public class Nuevas extends GPSScreen implements FieldChangeListener, FocusChang
         nueva.setNroEscolares(txtNroEscolares.getText().getText());
         nueva.setNroSuperior(txtNroSuperior.getText().getText());
         nueva.setNroAdultos(txtNroAdultos.getText().getText());
-    	
-        nueva.setModo("0");
         nueva.setEnviado("0");
         nueva.setFechaRegistro(Fechas.dateToString("yyyyMMddHHmm"));
         
@@ -1599,7 +1597,7 @@ public class Nuevas extends GPSScreen implements FieldChangeListener, FocusChang
 
         nuevas.saveObject(nueva, nuevaSC);
         progress.setTitle("Enviando...");
-        
+        nueva.setModo("0");
         if ( nuevas.putRemote(nueva) ) {
         	progress.close();
             nueva.setEnviado("1");

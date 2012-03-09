@@ -447,11 +447,14 @@ public class NuevaDB {
     			}
     		}
     		if( modo > 0 ) {
-    			if ( item.getModo().equals(String.valueOf(modo)) ) {
-    				result = result && true;
-    			} else {
-    				result = result && false;
-    			}
+    			int modoreal;
+    			if (modo==1) modoreal=0; else modoreal=1;
+	    			if ( item.getModo().equals(String.valueOf(modoreal)) ) {
+	    				result = result && true;
+	    			} else {
+	    				result = result && false;
+	    			}
+    		    
     		}
     		if ( result ) {
     			resultado.addElement(item);
