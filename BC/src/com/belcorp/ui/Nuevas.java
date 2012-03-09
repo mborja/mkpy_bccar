@@ -175,11 +175,16 @@ public class Nuevas extends GPSScreen implements FieldChangeListener, FocusChang
 	private boolean isEdicion=false;
 	
 	public boolean onClose() {
-    	if(Dialog.ask(Dialog.D_YES_NO, "¿Desea grabar en borrador antes de salir?") != Dialog.NO){
-    		grabarDraft();
-    	}else{
-    		close();
-    	}
+		if(isEdicion && nuevaSC.getModo().equals("1") )
+		{
+			
+		}else{
+	    	if(Dialog.ask(Dialog.D_YES_NO, "¿Desea grabar en borrador antes de salir?") != Dialog.NO){
+	    		grabarDraft();
+	    	}else{
+	    		close();
+	    	}
+		}
     	return true;
     };
 	
@@ -1180,7 +1185,7 @@ public class Nuevas extends GPSScreen implements FieldChangeListener, FocusChang
 			txtNombres.setFocus();
 			Dialog.inform("Debe ingresar el nombre de la solicitante");
 			return;
-		}else if(txtAppaterno.getText().getText().length() < 2){
+		}else if(txtNombres.getText().getText().length() < 2){
 			txtAppaterno.setFocus();
 			Dialog.inform("El nombre de la solicitante debe tener al menos 2 caracteres");
 			return;

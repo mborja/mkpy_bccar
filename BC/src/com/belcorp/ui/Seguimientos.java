@@ -165,6 +165,12 @@ public class Seguimientos extends GPSScreen implements FieldChangeListener, Focu
 				return;
 			}
 		}
+		
+		if ( txtObservacion.getText().getText().length() < 1 ) {
+			txtObservacion.setFocus();
+			Dialog.inform("Debe hacer una observación");
+			return;
+		}		
 
 		gpsLon = "0";
 		gpsLat = "0";
