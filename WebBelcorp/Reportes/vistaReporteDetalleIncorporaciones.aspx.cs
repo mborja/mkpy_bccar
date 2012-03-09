@@ -190,10 +190,10 @@ public partial class HistorialCrediticio_vistaIncorporaciones : System.Web.UI.Pa
         String nombres = txtNombres.Text;
 
         DateTime dtProjectStartDate = new DateTime();
-        DateTime dtFecRegIni = new DateTime();
-        DateTime dtFecRegFin = new DateTime();
+        DateTime dtFecRegIni = new DateTime(2000,01,01);
+        DateTime dtFecRegFin = DateTime.Today;
         CultureInfo culture = new CultureInfo("en-GB");
-        if (fechaInscripcion.Length > 0)
+        if (fechaInscripcionIni.Length > 0)
         {
             try
             {
@@ -204,8 +204,10 @@ public partial class HistorialCrediticio_vistaIncorporaciones : System.Web.UI.Pa
             catch (Exception ex)
             {
                 dtProjectStartDate = DateTime.Now;
+
             }
         }
+       
 
         int intEstadoVerificado = Convert.ToInt32(ddlEstadoVerificado.SelectedValue);
         int intModoGrabacion = Convert.ToInt32(ddlModoGrabacion.SelectedValue);
@@ -222,7 +224,7 @@ public partial class HistorialCrediticio_vistaIncorporaciones : System.Web.UI.Pa
             rpt.SetDatabaseLogon("", "", ".", db_databaseName);
             rpt.SetParameterValue("@regionCodigo", regionCodigo);
             rpt.SetParameterValue("@zonaCodigo", zonaCodigo);
-            rpt.SetParameterValue("@fechaInscripcion", dtProjectStartDate.ToShortDateString() ); // < por ahora null
+            rpt.SetParameterValue("@fechaInscripcion", dtProjectStartDate.ToShortDateString() ); 
             rpt.SetParameterValue("@fecRegIni", dtFecRegIni.ToShortDateString());
             rpt.SetParameterValue("@fecRegFin", dtFecRegFin.ToShortDateString());
             rpt.SetParameterValue("@campanhaInscripcion", campanhaInscripcion);
