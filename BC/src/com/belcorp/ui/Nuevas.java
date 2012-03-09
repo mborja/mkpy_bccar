@@ -307,7 +307,7 @@ public class Nuevas extends GPSScreen implements FieldChangeListener, FocusChang
         add(lblTipoDoc);
 
         if ( usuario.getIdPais().equals("7") ) { // PR
-        	txtNroDoc = new mkpyLabelEditField("Nro doc.identidad:", "", 9, EditField.FIELD_LEFT | EditField.NO_NEWLINE | EditField.FILTER_NUMERIC, Color.BLACK, Color.WHITE);
+        		txtNroDoc = new mkpyLabelEditField("Nro doc.identidad:", "", 9, EditField.FIELD_LEFT | EditField.NO_NEWLINE | EditField.FILTER_NUMERIC, Color.BLACK, Color.WHITE);
         }
         if ( usuario.getIdPais().equals("8") ) { // DOM
         	txtNroDoc = new mkpyLabelEditField("Nro doc.identidad:", "", 11, EditField.FIELD_LEFT | EditField.NO_NEWLINE | EditField.FILTER_NUMERIC, Color.BLACK, Color.WHITE);
@@ -320,9 +320,11 @@ public class Nuevas extends GPSScreen implements FieldChangeListener, FocusChang
 			else
 				txtNroDoc.getText().setText(sc.getNroDocumento());
 		}
-        txtNroDoc.setChangeListener(this);
-        txtNroDoc.setFocusListener(this);
-        
+		if(!isEdicion){
+			txtNroDoc.setChangeListener(this);
+			txtNroDoc.setFocusListener(this);
+		}
+		
         add(cboEstadoCivil);
         add(cboNivelEducativo);
         add(cboOtrasMarcas);
@@ -763,19 +765,35 @@ public class Nuevas extends GPSScreen implements FieldChangeListener, FocusChang
 			Dialog.inform("Debe ser mayor de edad");
 			return;
 		}
-
-		if ( txtNroDoc.getText().getText().length() < txtNroDoc.getText().getMaxSize() ) {
-			txtNroDoc.setFocus();
-			Dialog.inform("Debe ingresar un número de documento");
-			return;
-		} 
 		
-		if ( txtNroDoc.getText().getText().length() < txtNroDoc.getText().getMaxSize() ) {
-			int dif = txtNroDoc.getText().getMaxSize() - txtNroDoc.getText().getText().length();
-			for(int i = 0; i < dif; i++) {
-				txtNroDoc.getText().setText("0" + txtNroDoc.getText().getText());
+		if(isEdicion){
+			if(!txtNroDoc.getText().getText().equals(nuevaSC.getNroDocumento().substring(5))){
+				if ( txtNroDoc.getText().getText().length() < txtNroDoc.getText().getMaxSize() ) {
+					txtNroDoc.setFocus();
+					Dialog.inform("Debe ingresar un número de documento");
+					return;
+				}
+				if ( txtNroDoc.getText().getText().length() < txtNroDoc.getText().getMaxSize() ) {
+					int dif = txtNroDoc.getText().getMaxSize() - txtNroDoc.getText().getText().length();
+					for(int i = 0; i < dif; i++) {
+						txtNroDoc.getText().setText("0" + txtNroDoc.getText().getText());
+					}
+				}
+			}
+		}else{
+			if ( txtNroDoc.getText().getText().length() < txtNroDoc.getText().getMaxSize() ) {
+				txtNroDoc.setFocus();
+				Dialog.inform("Debe ingresar un número de documento");
+				return;
+			} 
+			if ( txtNroDoc.getText().getText().length() < txtNroDoc.getText().getMaxSize() ) {
+				int dif = txtNroDoc.getText().getMaxSize() - txtNroDoc.getText().getText().length();
+				for(int i = 0; i < dif; i++) {
+					txtNroDoc.getText().setText("0" + txtNroDoc.getText().getText());
+				}
 			}
 		}
+
 
 		if ( cboEstadoCivil.getSelectedIndex() == 0 ) {
 			cboEstadoCivil.setFocus();
@@ -970,9 +988,12 @@ public class Nuevas extends GPSScreen implements FieldChangeListener, FocusChang
         nueva.setNombres(txtNombres.getText().getText());
         nueva.setFechaNacimiento(sdf.formatLocal(txtFechaNac.getDate()));
         //TODO:Número de documento oculto dependiendo si es edición o nuevo
-        if(isEdicion)
-	        nueva.setNroDocumento(docOculto);
-        else
+        if(isEdicion){
+        	if(txtNroDoc.getText().getText().equals(nuevaSC.getNroDocumento().substring(5)))
+        		nueva.setNroDocumento(nuevaSC.getNroDocumento());
+	        else
+	        	nueva.setNroDocumento(txtNroDoc.getText().getText());
+        }else
         	nueva.setNroDocumento(txtNroDoc.getText().getText());
 
         if ( cboEstadoCivil.getSelectedIndex() == 0 ) {
@@ -1090,6 +1111,9 @@ public class Nuevas extends GPSScreen implements FieldChangeListener, FocusChang
         	progress.close();
         	nueva.setModo("1");
         	nuevas.commitChanges();
+        	//MBL Si hay error pasa a modo edición.
+        	nuevaSC = nueva; 
+        	isEdicion = true;
         	Error error = nuevas.getError();
         	Dialog.inform("Se produjo un error al enviar la incorporación, se guardará solo en el equipo como Borrador. ".concat(error.getMensaje()));
             manejoErrores(error);
@@ -1178,18 +1202,32 @@ public class Nuevas extends GPSScreen implements FieldChangeListener, FocusChang
 			Dialog.inform("Debe ingresar una fecha de nacimiento inferior");
 			return;
 		}
-        
-		if ( txtNroDoc.getText().getText().length() < txtNroDoc.getText().getMaxSize() ) {
-			txtNroDoc.setFocus();
-			Dialog.inform("Debe ingresar un número de documento");
-			return;
-		} else if ( txtNroDoc.getText().getText().length() < txtNroDoc.getText().getMaxSize() ) {
-			int dif = txtNroDoc.getText().getMaxSize() - txtNroDoc.getText().getText().length();
-			for(int i = 0; i < dif; i++) {
-				txtNroDoc.getText().setText("0" + txtNroDoc.getText().getText());
+		
+		if(isEdicion){
+			if(!txtNroDoc.getText().getText().equals(nuevaSC.getNroDocumento().substring(5))){
+				if ( txtNroDoc.getText().getText().length() < txtNroDoc.getText().getMaxSize() ) {
+					txtNroDoc.setFocus();
+					Dialog.inform("Debe ingresar un número de documento");
+					return;
+				} else if ( txtNroDoc.getText().getText().length() < txtNroDoc.getText().getMaxSize() ) {
+					int dif = txtNroDoc.getText().getMaxSize() - txtNroDoc.getText().getText().length();
+					for(int i = 0; i < dif; i++) {
+						txtNroDoc.getText().setText("0" + txtNroDoc.getText().getText());
+					}
+				}
+			}
+		}else{
+			if ( txtNroDoc.getText().getText().length() < txtNroDoc.getText().getMaxSize() ) {
+				txtNroDoc.setFocus();
+				Dialog.inform("Debe ingresar un número de documento");
+				return;
+			} else if ( txtNroDoc.getText().getText().length() < txtNroDoc.getText().getMaxSize() ) {
+				int dif = txtNroDoc.getText().getMaxSize() - txtNroDoc.getText().getText().length();
+				for(int i = 0; i < dif; i++) {
+					txtNroDoc.getText().setText("0" + txtNroDoc.getText().getText());
+				}
 			}
 		}
-        
 		if ( cboEstadoCivil.getSelectedIndex() == 0 ) {
 			cboEstadoCivil.setFocus();
 			Dialog.inform("Debe indicar el estado civil de la solicitante");
@@ -1442,9 +1480,12 @@ public class Nuevas extends GPSScreen implements FieldChangeListener, FocusChang
         nueva.setNombres(txtNombres.getText().getText());
         nueva.setFechaNacimiento(sdf.formatLocal(txtFechaNac.getDate()));
         //TODO:Número de documento oculto dependiendo si es edicion o nuevo
-        if(isEdicion)
-        	nueva.setNroDocumento(docOculto);
-        else
+        if(isEdicion){
+        	if(txtNroDoc.getText().getText().equals(nuevaSC.getNroDocumento().substring(5)))
+        		nueva.setNroDocumento(nuevaSC.getNroDocumento());
+	        else
+	        	nueva.setNroDocumento(txtNroDoc.getText().getText());
+        }else
         	nueva.setNroDocumento(txtNroDoc.getText().getText());
 
         if ( cboEstadoCivil.getSelectedIndex() == 0 ) {
@@ -1565,6 +1606,9 @@ public class Nuevas extends GPSScreen implements FieldChangeListener, FocusChang
         	progress.close();
         	nueva.setModo("1");
         	nuevas.commitChanges();
+        	//MBL Si hay error pasa a modo edición.
+        	nuevaSC = nueva; 
+        	isEdicion = true;
         	Error error = nuevas.getError();
         	Dialog.inform("Se produjo un error al enviar la incorporación, se guardará como Borrador. ".concat(error.getMensaje()));
             manejoErrores(error);
