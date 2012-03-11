@@ -859,8 +859,8 @@ namespace EntityLayer
             }
         }
 
-        private bool _modoGrabacion;
-        public bool modoGrabacion
+        private String _modoGrabacion;
+        public String modoGrabacion
         {
             get
             {

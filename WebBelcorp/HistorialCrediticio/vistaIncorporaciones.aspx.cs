@@ -135,7 +135,7 @@ public partial class HistorialCrediticio_vistaIncorporaciones : System.Web.UI.Pa
         incorporacionBE.apellidoPaterno = txtApellidoPaterno.Text;
         incorporacionBE.apellidoMaterno = txtApellidoMaterno.Text;
         incorporacionBE.nombres = txtNombres.Text;
-        incorporacionBE.ModoGrabacionInt = 1; // Esto siempre será 1 en este formulario
+        incorporacionBE.ModoGrabacionInt = 0; // Esto siempre será 0 en este formulario 0:Real 1:Borrador
         incorporacionBE.EstadoVerificadoInt = Convert.ToInt32(ddlEstadoActivo.SelectedValue);
 
         try

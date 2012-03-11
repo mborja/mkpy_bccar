@@ -47,7 +47,7 @@ public partial class HistorialCrediticio_vistaIncorporaciones : System.Web.UI.Pa
                 else
                     ddlEstadoVerificado.SelectedIndex = 2;
 
-                if (modoGrabacion == 1)
+                if (modoGrabacion == 0)
                     ddlModoGrabacion.SelectedIndex = 1;
                 else
                     ddlModoGrabacion.SelectedIndex = 2;

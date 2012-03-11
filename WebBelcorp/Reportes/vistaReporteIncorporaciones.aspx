@@ -70,8 +70,8 @@
                 <td align="left">
                     <asp:DropDownList ID="ddlModoGrabacion" runat="server">
                         <asp:ListItem Value="2">Todos</asp:ListItem>
-                        <asp:ListItem Value="1">Real</asp:ListItem>
-                        <asp:ListItem Value="0">Borrador</asp:ListItem>
+                        <asp:ListItem Value="0">Real</asp:ListItem>
+                        <asp:ListItem Value="1">Borrador</asp:ListItem>
                     </asp:DropDownList>
                 </td>
                 <td align="left">

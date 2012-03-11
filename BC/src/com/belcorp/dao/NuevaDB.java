@@ -447,9 +447,9 @@ public class NuevaDB {
     			}
     		}
     		if( modo > 0 ) {
-    			int modoreal;
-    			if (modo==1) modoreal=0; else modoreal=1;
-	    			if ( item.getModo().equals(String.valueOf(modoreal)) ) {
+    			int modofinal; //modo=1:Borrador(1) modo=2:Real(0)
+    			if (modo==1) modofinal=1; else modofinal=0;
+	    			if ( item.getModo().equals(String.valueOf(modofinal)) ) {
 	    				result = result && true;
 	    			} else {
 	    				result = result && false;

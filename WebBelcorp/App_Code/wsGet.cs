@@ -385,8 +385,8 @@ public class wsGet : System.Web.Services.WebService
             iBE.recNumeroSatelites = Convert.ToInt32(RECORD_NROSATELITES);
             iBE.recObservacion = RECORD_OBSERVACION;
             iBE.recFechaVisita = RECORD_FECHAVISITA;
-            iBE.modoGrabacion = (TIPOGRABACION.Equals("1")) ? false : true;
-
+            iBE.modoGrabacion = TIPOGRABACION;
+            
             try {
                 resultado = incorporacionBL.ws_registroIncorporacion(iBE, APPID);
                 if (resultado.Split('|')[0] == "1") enviaCorreoIncorporacion(iBE);

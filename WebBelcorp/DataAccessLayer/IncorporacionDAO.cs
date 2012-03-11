@@ -55,17 +55,15 @@ namespace DataAccessLayer
                 }
 
                 da.SelectCommand.Parameters.Add("@fechaInscripcion", SqlDbType.SmallDateTime).Value = (incorporacionBE.fechaRegistro.Length == 0) ? Convert.DBNull : dtProjectStartDate;
-                
                 da.SelectCommand.Parameters.Add("@fecRegIni", SqlDbType.SmallDateTime).Value = (incorporacionBE.fecRegIni.Length == 0) ? Convert.DBNull : dtFecRegIni;
                 da.SelectCommand.Parameters.Add("@fecRegFin", SqlDbType.SmallDateTime).Value = (incorporacionBE.fecRegFin.Length == 0) ? Convert.DBNull : dtFecRegFin;
-                
                 da.SelectCommand.Parameters.Add("@campanhaInscripcion", SqlDbType.VarChar, 6).Value = incorporacionBE.CampanhaInscripcion;
                 da.SelectCommand.Parameters.Add("@numeroDocumento", SqlDbType.VarChar, 18).Value = incorporacionBE.numeroDocumento;
                 da.SelectCommand.Parameters.Add("@consultoraCodigo", SqlDbType.VarChar, 15).Value = incorporacionBE.ConsultoraCodigo;
                 da.SelectCommand.Parameters.Add("@apellidoPaterno", SqlDbType.VarChar, 30).Value = incorporacionBE.apellidoPaterno;
                 da.SelectCommand.Parameters.Add("@apellidoMaterno", SqlDbType.VarChar, 30).Value = incorporacionBE.apellidoMaterno;
                 da.SelectCommand.Parameters.Add("@nombres", SqlDbType.VarChar, 30).Value = incorporacionBE.nombres;
-                da.SelectCommand.Parameters.Add("@modoGrabacion", SqlDbType.Bit).Value = (incorporacionBE.ModoGrabacionInt > 1) ? Convert.DBNull : Convert.ToBoolean(incorporacionBE.ModoGrabacionInt);
+                da.SelectCommand.Parameters.Add("@modoGrabacion", SqlDbType.Bit).Value = Convert.ToBoolean(incorporacionBE.ModoGrabacionInt);
                 da.SelectCommand.Parameters.Add("@estadoVerificado", SqlDbType.Bit).Value = (incorporacionBE.EstadoVerificadoInt > 1) ? Convert.DBNull : Convert.ToBoolean(incorporacionBE.EstadoVerificadoInt);
                 
                 da.Fill(dt);
@@ -159,7 +157,7 @@ namespace DataAccessLayer
                         ic.regionCodigo = Convert.ToString(dt.Rows[i]["regionCodigo"]).Trim();
                         ic.zonaCodigo = Convert.ToString(dt.Rows[i]["zonaCodigo"]).Trim();
                         ic.modoGrabacion = Convert.ToBoolean(dt.Rows[i]["modoGrabacion"]);
-                        ic.modoGrabacionString = (ic.modoGrabacion) ? "Real" : "Borrador";
+                        ic.modoGrabacionString = (ic.modoGrabacion) ? "Borrador" : "Real";
                         ic.estadoVerificado = Convert.ToBoolean(dt.Rows[i]["estadoVerifica"]);
                         ic.estadoVerificadoString = (ic.estadoVerificado) ? "Si" : "No";
                         ic.cantidad = Convert.ToInt32(dt.Rows[i]["cantidad"]);
@@ -264,7 +262,7 @@ namespace DataAccessLayer
                 cmd.Parameters.Add("@RECORD_NROSATELITES", SqlDbType.Int).Value = i.recNumeroSatelites;
                 cmd.Parameters.Add("@RECORD_OBSERVACION", SqlDbType.VarChar, 200).Value = i.recObservacion;
                 cmd.Parameters.Add("@RECORD_FECHAVISITA", SqlDbType.VarChar, 12).Value = i.recFechaVisita;
-                cmd.Parameters.Add("@TIPOGRABACION", SqlDbType.Bit).Value = i.modoGrabacion;
+                cmd.Parameters.Add("@TIPOGRABACION", SqlDbType.VarChar,1).Value = i.modoGrabacion;
                 /*
                 int result = cmd.ExecuteNonQuery();
                 resultado = resultado.ToString() + "|";

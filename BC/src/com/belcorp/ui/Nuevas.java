@@ -175,9 +175,9 @@ public class Nuevas extends GPSScreen implements FieldChangeListener, FocusChang
 	private boolean isEdicion=false;
 	
 	public boolean onClose() {
-		if(isEdicion && nuevaSC.getModo().equals("1") )
+		if(isEdicion && nuevaSC.getModo().equals("0") )
 		{
-			
+			close();
 		}else{
 	    	if(Dialog.ask(Dialog.D_YES_NO, "¿Desea grabar en borrador antes de salir?") != Dialog.NO){
 	    		grabarDraft();
