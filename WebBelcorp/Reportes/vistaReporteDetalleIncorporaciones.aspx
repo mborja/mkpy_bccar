@@ -145,7 +145,8 @@
                         style="font-family: Verdana; font-size: x-small; font-weight: 700"></asp:Label>
                 </td>
                 <td align="left">
-                    <asp:TextBox ID="txtDocumentoIdentidad" onkeypress="return onlyNumbers();" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtDocumentoIdentidad" onkeypress="return onlyNumbers();" 
+                        runat="server" MaxLength="11"></asp:TextBox>
                     </td>
                 <td align="left">
                     &nbsp;</td>

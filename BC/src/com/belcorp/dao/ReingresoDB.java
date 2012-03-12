@@ -89,7 +89,8 @@ public class ReingresoDB {
 			+ "&CODIGOCONSULTORA=" + re.getCodConsultora() 
 			+ "&APELLIDOPATERNO=" + re.getApPaterno() + "&APELLIDOMATERNO=" + re.getApMaterno() + "&NOMBRES=" + re.getNombres()
 			+ "&NRODOCUMENTO=" + re.getNroDocumento() 
-
+            + "&TELEFONO1=" + re.getTelefonoCasa() 
+            + "&TELEFONO2=" + re.getTelefonoCelular() 
 			+ "&RECORD_FECHAVISITA=" + re.getRecord().getFechaVisita()
 			+ "&RECORD_OBSERVACION=" + re.getRecord().getObservacion()
 			+ "&RECORD_PIN=" + Sistema.getPin()

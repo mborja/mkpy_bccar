@@ -158,7 +158,8 @@
                 </td>
                 <td style="height: 12px; text-align: left;">
                         
-                    <asp:TextBox ID="txtDocumentoIdentidad" onkeypress="return onlyNumbers();" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtDocumentoIdentidad" onkeypress="return onlyNumbers();" 
+                        runat="server" MaxLength="11"></asp:TextBox>
                                 </td>
                 <td style="height: 12px">
                     &nbsp;</td>

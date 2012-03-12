@@ -197,6 +197,8 @@ namespace DataAccessLayer
                 cmd.Parameters.Add("@APELLIDOPATERNO", SqlDbType.VarChar, 30).Value = r.apellidoPaterno;
                 cmd.Parameters.Add("@APELLIDOMATERNO", SqlDbType.VarChar, 30).Value = r.apellidoMaterno;
                 cmd.Parameters.Add("@NRODOCUMENTO", SqlDbType.Char, 18).Value = r.documentoNumero;
+                cmd.Parameters.Add("@TELEFONO1", SqlDbType.Char, 15).Value = r.telefono1;
+                cmd.Parameters.Add("@TELEFONO2", SqlDbType.Char, 15).Value = r.telefono2;
                 cmd.Parameters.Add("@RECORD_PIN", SqlDbType.VarChar, 20).Value = r.recPin;
                 cmd.Parameters.Add("@RECORD_IMSI", SqlDbType.VarChar, 20).Value = r.recImsi;
                 cmd.Parameters.Add("@RECORD_LONGITUD", SqlDbType.VarChar, 20).Value = r.recLongitud;

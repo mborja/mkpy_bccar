@@ -417,6 +417,8 @@ public class wsGet : System.Web.Services.WebService
         string APELLIDOPATERNO,
         string APELLIDOMATERNO,
         string NRODOCUMENTO,
+        string TELEFONO1,
+        string TELEFONO2,
         string RECORD_FECHAVISITA,
         string RECORD_OBSERVACION,
         string RECORD_PIN,
@@ -445,6 +447,8 @@ public class wsGet : System.Web.Services.WebService
             r.apellidoPaterno = APELLIDOPATERNO;
             r.apellidoMaterno = APELLIDOMATERNO;
             r.documentoNumero = NRODOCUMENTO;
+            r.telefono1 = TELEFONO1;
+            r.telefono2 = TELEFONO2;
             r.recPin = RECORD_PIN;
             r.recImsi = RECORD_IMSI;
             r.recLongitud = RECORD_LONGITUD;

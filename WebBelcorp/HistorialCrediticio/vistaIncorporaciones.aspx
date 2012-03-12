@@ -117,7 +117,8 @@
                             <asp:Label ID="lblDocIdentidad" 
                                 runat="server" Text="Documento de identidad:" CssClass="labelEs"></asp:Label> </td>
                 <td style="text-align: left">
-                    <asp:TextBox ID="txtDocumentoIdentidad" runat="server" onkeypress="return onlyNumbers();" MaxLength="18"></asp:TextBox>
+                    <asp:TextBox ID="txtDocumentoIdentidad" runat="server" 
+                        onkeypress="return onlyNumbers();" MaxLength="11"></asp:TextBox>
                 </td>
                 <td style="text-align: left">
                             &nbsp;</td>

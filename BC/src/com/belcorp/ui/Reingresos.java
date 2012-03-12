@@ -327,19 +327,17 @@ public class Reingresos extends GPSScreen implements FieldChangeListener, FocusC
             record.setSatelites("0");
     	}
     	reingreso.setRecord(record);
-        
-        reingresos.saveObject(reingreso);
         progress.setTitle("Enviando...");
         
         if ( reingresos.putRemote(reingreso) ) {
         	reingreso.setEnviado("1");
+        	reingresos.saveObject(reingreso);
             reingresos.commitChanges();
         	Dialog.inform("El reingreso se envío con éxito");
             progress.close();
             reingresos = null;
             close();
         } else {
-        	reingresos.commitChanges();
         	progress.close();
         	Error error = reingresos.getError();
         	Dialog.inform("Se produjo un error al enviar el reingreso, " + error.getMensaje());

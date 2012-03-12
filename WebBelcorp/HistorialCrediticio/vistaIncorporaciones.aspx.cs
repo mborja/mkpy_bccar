@@ -167,7 +167,7 @@ public partial class HistorialCrediticio_vistaIncorporaciones : System.Web.UI.Pa
                 divMensaje.InnerHtml = "";
             }
 
-        }
+       }
         catch (Exception ex)
         {
             //System.Windows.Forms.MessageBox.Show(ex.Message);
@@ -179,6 +179,12 @@ public partial class HistorialCrediticio_vistaIncorporaciones : System.Web.UI.Pa
         e.Row.Cells[0].Visible = false;
         e.Row.Cells[1].Visible = false;
         e.Row.Cells[12].Visible = false;
+        if (e.Row.RowType == DataControlRowType.DataRow)
+        {
+            if (((CheckBox)e.Row.Cells[11].Controls[1]).Checked)
+                e.Row.Cells[11].Enabled = false;
+
+        }
     }
 
     protected void gvIncorporaciones_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -226,9 +232,8 @@ public partial class HistorialCrediticio_vistaIncorporaciones : System.Web.UI.Pa
     {
         if (e.Row.RowType == DataControlRowType.DataRow )
         {
-            // Display the company name in italics.
-            //int ultimo = e.Row.Cells.Count-1;
-            if (e.Row.Cells[7].Text!="&nbsp;") e.Row.Cells[11].Enabled = false;
+            if (((CheckBox)e.Row.Cells[11].Controls[1]).Checked)
+                e.Row.Cells[11].Enabled = false;
 
         }
 

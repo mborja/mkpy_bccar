@@ -112,6 +112,20 @@ namespace EntityLayer
             set { _documentoNumero = value; }
         }
 
+        private String _telefono1;
+        public String telefono1
+        {
+            get { return _telefono1; }
+            set { _telefono1 = value; }
+        }
+
+        private String _telefono2;
+        public String telefono2
+        {
+            get { return _telefono2; }
+            set { _telefono2 = value; }
+        }
+
         private String _recPin;
         public String recPin
         {

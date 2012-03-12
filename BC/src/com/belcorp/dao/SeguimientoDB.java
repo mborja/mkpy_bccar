@@ -67,6 +67,11 @@ public class SeguimientoDB {
     	persist.commit();
     	return true;
     }
+    
+    public boolean removeObject(Seguimiento se){
+    	objetos.removeElement(se);
+    	return true;
+    }
 
     public Vector getSinEnviar() {
     	Vector resultado = new Vector();

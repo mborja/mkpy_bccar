@@ -227,12 +227,12 @@ public class Seguimientos extends GPSScreen implements FieldChangeListener, Focu
             record.setSatelites("0");
     	}
     	seguimiento.setRecord(record);
-        
-        seguimientos.saveObject(seguimiento);
+       
         progress.setTitle("Enviando...");
         if ( seguimientos.putRemote(seguimiento) ) {
         	progress.close();
             seguimiento.setEnviado("1");
+            seguimientos.saveObject(seguimiento);
             seguimientos.commitChanges();
         	Dialog.inform("El seguimiento se envío con éxito");
             seguimientos = null;
