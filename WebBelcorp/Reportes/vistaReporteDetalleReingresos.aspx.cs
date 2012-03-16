@@ -121,7 +121,7 @@ public partial class HistorialCrediticio_vistaReingresos : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-            System.Windows.Forms.MessageBox.Show(ex.Message);
+            //System.Windows.Forms.MessageBox.Show(ex.Message);
         }
     }
 
@@ -228,7 +228,7 @@ public partial class HistorialCrediticio_vistaReingresos : System.Web.UI.Page
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
+                //System.Windows.Forms.MessageBox.Show(ex.Message);
             }
         }
     }

@@ -135,7 +135,7 @@ public partial class HistorialCrediticio_vistaIncorporaciones : System.Web.UI.Pa
         }
         catch (Exception ex)
         {
-            System.Windows.Forms.MessageBox.Show(ex.Message);
+            //System.Windows.Forms.MessageBox.Show(ex.Message);
         }
     }
 

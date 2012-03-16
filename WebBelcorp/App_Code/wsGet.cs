@@ -393,11 +393,12 @@ public class wsGet : System.Web.Services.WebService
             }
             catch (Exception ex) {
                 Log.lanzarError(ex);
+                resultado = "100|" + ex.Message;
             }
 
         }
         else
-            resultado = "0|No existe el código APPID";
+            resultado = "101|No existe el código APPID";
 
         return crearXml(resultado);
     }
@@ -466,11 +467,12 @@ public class wsGet : System.Web.Services.WebService
             catch (Exception ex)
             {
                 Log.lanzarError(ex);
+                resultado = "100|"+ ex.Message;
             }
 
         }
         else
-            resultado = "0|No existe el código APPID";
+            resultado = "101|No existe el código APPID";
         return crearXml(resultado);
     }
 
@@ -531,12 +533,13 @@ public class wsGet : System.Web.Services.WebService
             catch (Exception ex)
             {
                 Log.lanzarError(ex);
+                resultado = "100|" + ex.Message;
             }
 
 
         }
         else
-            resultado = "0|No existe el código APPID";
+            resultado = "101|No existe el código APPID";
         return crearXml(resultado);
     }
 

@@ -118,7 +118,7 @@ public partial class HistorialCrediticio_vistaSeguimientos : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-            System.Windows.Forms.MessageBox.Show(ex.Message);
+            //System.Windows.Forms.MessageBox.Show(ex.Message);
         }
     }
 
