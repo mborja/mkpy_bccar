@@ -582,11 +582,13 @@ public class Nuevas extends GPSScreen implements FieldChangeListener, FocusChang
 	private void llenaProvincias() {
 		vUbigeos = ubigeos.getObjetos();
 		String aTmp[] = Cadenas.getDescriptions(vUbigeos);
-		aPueblo = new String [aTmp.length + 1];
+		//aPueblo = new String [aTmp.length + 1];
+		aPueblo = new String [aTmp.length];
+		
 		for(int i = 0; i < aTmp.length; i++) {
 			aPueblo[i] = aTmp[i];
 		}
-		aPueblo[aTmp.length] = "OTRO"; 
+		// mbl: se sacó por indicación de Bárbara aPueblo[aTmp.length] = "OTRO"; 
 	}
 	
 	public void fieldChanged(Field field, int context) {

@@ -426,21 +426,21 @@ public class NuevaDB {
     			}
     		}
     		if( paterno.length() > 0 ) {
-    			if ( item.getApPaterno().startsWith(paterno)) { // .equals(paterno) ) {
+    			if ( item.getApPaterno().toUpperCase().startsWith(paterno.toUpperCase())) { // .equals(paterno) ) {
     				result = result && true;
     			} else {
     				result = result && false;
     			}
     		}
     		if( materno.length() > 0 ) {
-    			if ( item.getApMaterno().startsWith(materno)) {
+    			if ( item.getApMaterno().toUpperCase().startsWith(materno.toUpperCase())) {
     				result = result && true;
     			} else {
     				result = result && false;
     			}
     		}
     		if( nombres.length() > 0 ) {
-    			if ( item.getNombres().startsWith(nombres)) {
+    			if ( item.getNombres().toUpperCase().startsWith(nombres.toUpperCase())) {
     				result = result && true;
     			} else {
     				result = result && false;
