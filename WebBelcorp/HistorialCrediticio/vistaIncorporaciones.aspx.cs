@@ -181,9 +181,10 @@ public partial class HistorialCrediticio_vistaIncorporaciones : System.Web.UI.Pa
         e.Row.Cells[12].Visible = false;
         if (e.Row.RowType == DataControlRowType.DataRow)
         {
-            if (((CheckBox)e.Row.Cells[11].Controls[1]).Checked)
+            /*
+            if ( ((CheckBox)e.Row.Cells[11].Controls[1]).Checked)
                 e.Row.Cells[11].Enabled = false;
-
+            */
         }
     }
 
@@ -232,8 +233,12 @@ public partial class HistorialCrediticio_vistaIncorporaciones : System.Web.UI.Pa
     {
         if (e.Row.RowType == DataControlRowType.DataRow )
         {
-            if (((CheckBox)e.Row.Cells[11].Controls[1]).Checked)
-                e.Row.Cells[11].Enabled = false;
+            String fechaFila = e.Row.Cells[4].Text;
+            DateTime fecha = DateTime.Parse(fechaFila);
+
+            if (!DateTime.Now.ToShortDateString().Equals(fecha.ToShortDateString()) && 
+                ((CheckBox)e.Row.Cells[11].Controls[1]).Checked)
+                    e.Row.Cells[11].Enabled = false;
 
         }
 
