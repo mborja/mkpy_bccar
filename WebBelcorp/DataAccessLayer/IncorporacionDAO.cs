@@ -39,7 +39,7 @@ namespace DataAccessLayer
                 DateTime dtProjectStartDate = new DateTime();
                 DateTime dtFecRegIni = new DateTime();
                 DateTime dtFecRegFin = new DateTime();
-                CultureInfo culture = new CultureInfo("en-GB");
+                CultureInfo culture = new CultureInfo("es-PE");
                 if ( incorporacionBE.fechaRegistro.Length > 0) 
                 {
                     try
@@ -54,7 +54,6 @@ namespace DataAccessLayer
                     }
                 }
 
-                da.SelectCommand.Parameters.Add("@fechaInscripcion", SqlDbType.SmallDateTime).Value = (incorporacionBE.fechaRegistro.Length == 0) ? Convert.DBNull : dtProjectStartDate;
                 da.SelectCommand.Parameters.Add("@fecRegIni", SqlDbType.SmallDateTime).Value = (incorporacionBE.fecRegIni.Length == 0) ? Convert.DBNull : dtFecRegIni;
                 da.SelectCommand.Parameters.Add("@fecRegFin", SqlDbType.SmallDateTime).Value = (incorporacionBE.fecRegFin.Length == 0) ? Convert.DBNull : dtFecRegFin;
                 da.SelectCommand.Parameters.Add("@campanhaInscripcion", SqlDbType.VarChar, 6).Value = incorporacionBE.CampanhaInscripcion;
@@ -91,6 +90,7 @@ namespace DataAccessLayer
                         ic.estadoVerificado = Convert.ToBoolean(dt.Rows[j]["estadoVerificado"]);
                         ic.estadoActivo = Convert.ToBoolean(dt.Rows[j]["estadoActivo"]);
                         ic.tipo = Convert.ToChar(dt.Rows[j]["tipo"]);
+                        ic.fechaActualizacion = Convert.ToString(dt.Rows[j]["fechaActuaizacion"]);
                         listado.Add(ic);
                     }
                 }

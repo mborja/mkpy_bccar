@@ -238,6 +238,8 @@
                             Checked='<%# Bind("estadoVerificado") %>' />
                     </ItemTemplate>
                 </asp:TemplateField>
+                <asp:BoundField DataField="fechaActualizacion" 
+                    HeaderText="Fecha Actualizacion" />
             </Columns>
             
             <FooterStyle BackColor="#7F7F7F" />

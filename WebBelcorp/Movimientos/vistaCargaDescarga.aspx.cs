@@ -29,6 +29,7 @@ public partial class Movimientos_vistaCargaDescarga : System.Web.UI.Page
     protected void cmdCargar_Click(object sender, EventArgs e)
     {
         String result = "";
+        DateTime inicio = DateTime.Now;
         if (fileUploadConsultora.HasFile || fileUploadGerenteZona.HasFile || fileUploadCampania.HasFile || fileUploadCronogramaFacturacion.HasFile)
         {
         }
@@ -57,10 +58,10 @@ public partial class Movimientos_vistaCargaDescarga : System.Web.UI.Page
         {
             result = procesaUpload(fileUploadCronogramaFacturacion, MakipurayConstant.PROCESS_TYPE_BILLING_SCHEDULE);
         }
-
+        DateTime fin = DateTime.Now;
         if (result == "")
         {
-            divMensaje.InnerHtml = "<div id=\"info\">Los archivos se subieron correctamente.</div>";
+            divMensaje.InnerHtml = "<div id=\"info\">Los archivos se subieron correctamente.<br/>Duración:" + (fin - inicio).Seconds.ToString() + " segundos<div>";
         }
         else
         {

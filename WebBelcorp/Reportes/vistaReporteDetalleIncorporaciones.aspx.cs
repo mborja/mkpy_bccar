@@ -224,7 +224,6 @@ public partial class HistorialCrediticio_vistaIncorporaciones : System.Web.UI.Pa
             rpt.SetDatabaseLogon("", "", ".", db_databaseName);
             rpt.SetParameterValue("@regionCodigo", regionCodigo);
             rpt.SetParameterValue("@zonaCodigo", zonaCodigo);
-            rpt.SetParameterValue("@fechaInscripcion", dtProjectStartDate.ToShortDateString() ); 
             rpt.SetParameterValue("@fecRegIni", dtFecRegIni.ToShortDateString());
             rpt.SetParameterValue("@fecRegFin", dtFecRegFin.ToShortDateString());
             rpt.SetParameterValue("@campanhaInscripcion", campanhaInscripcion);

@@ -78,6 +78,13 @@ namespace EntityLayer
             set { _fechaRegistro = value; }
         }
 
+        private String _fechaActualizacion;
+        public String fechaActualizacion
+        {
+            get { return _fechaActualizacion; }
+            set { _fechaActualizacion = value; }
+        }
+
         private String _campanhaInscripcion;
         public String campanhaInscripcion
         {
