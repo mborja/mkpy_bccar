@@ -1649,6 +1649,12 @@ public class Nuevas extends GPSScreen implements FieldChangeListener, FocusChang
 		case 21:
 			txtCodConsRec.setFocus();
 			break;
+		case 24:
+			txtNroDoc.setFocus();
+			break;		
+		case 25:
+			txtTerritorio.setFocus();
+			break;
 		default:
 			txtNroDoc.setFocus();
 			break;
