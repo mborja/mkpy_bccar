@@ -1377,7 +1377,7 @@ public class Nuevas extends GPSScreen implements FieldChangeListener, FocusChang
 		
 		if ( cboRefFamTipoVinculo.getSelectedIndex() == 0 ) {
 			cboRefFamTipoVinculo.setFocus();
-			Dialog.inform("Debe indicar el tipo de referencia fammiliar");
+			Dialog.inform("Debe indicar el tipo de referencia familiar");
 			return;
 		}
 
@@ -1423,7 +1423,7 @@ public class Nuevas extends GPSScreen implements FieldChangeListener, FocusChang
 		
 		if ( cboRefNoFamTipoVinculo.getSelectedIndex() == 0 ) {
 			cboRefNoFamTipoVinculo.setFocus();
-			Dialog.inform("Debe indicar el tipo de referencia no fammiliar");
+			Dialog.inform("Debe indicar el tipo de referencia no familiar");
 			return;
 		}
 		
